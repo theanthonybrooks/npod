@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1c324b;
 }
 
 @theme inline {
@@ -12,15 +12,23 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
-  background: var(--background);
+  /* background-color: black; */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  background: url("/images/backg_large_longer.jpg") no-repeat center bottom; /* change to bottom at 7000px */
+  background-attachment: fixed; /* change to fixed after 7000px*/
+  background-size: 100vw auto; /* or 'contain' if you prefer */
+
+  &.fixed-bg {
+    background-attachment: fixed;
+    background-position: bottom center;
+  }
 }
