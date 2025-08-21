@@ -8,7 +8,14 @@ export default function Home() {
         <Link href='/charlie'>Go to the cat!</Link>
       </main>
       <footer className='row-start-3 flex gap-[24px] flex-wrap items-center justify-center'>
-        <p>I&apos;m a little teapot</p>
+        {/* <p>I&apos;m a little teapot</p> */}
+        <p>
+          Made by{" "}
+          <Link href='https://theanthonybrooks.com'>Anthony Brooks</Link>
+        </p>
+        <p>
+          Designed by <Link href='https://zerenoruc.com'>Zeren Oruc</Link>
+        </p>
       </footer>
     </div>
   )
