@@ -54,8 +54,8 @@ export default function Test() {
       pin: bgRef.current,
       pinSpacing: false,
       start: "top top",
-      endTrigger: endRef.current,
-      end: "top top",
+      endTrigger: "footer",
+      end: "bottom top",
       markers: true,
       invalidateOnRefresh: true,
     });

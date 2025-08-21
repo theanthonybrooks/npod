@@ -55,7 +55,7 @@ export default function Home() {
         <Navbar />
         <div ref={bgRef} className="bg-container bg" />
         <div className="grid min-h-screen grid-rows-[auto_1fr_auto] items-center justify-items-center gap-16 p-4 pb-20 font-sans">
-          <main className="row-start-2 flex flex-col items-center gap-[32px] text-center text-white/80 sm:items-start">
+          <main className="row-start-2 flex flex-col items-center gap-[32px] text-center text-white/90 sm:items-start">
             <header
               className="flex flex-col items-start font-black uppercase"
               style={{

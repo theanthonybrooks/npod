@@ -44,7 +44,7 @@ export const Navbar = ({ className }: NavbarProps) => {
   return (
     <div
       className={cn(
-        "text-foreground sticky top-6 z-50 mx-auto flex h-14 w-full max-w-[90vw] items-center justify-around rounded-full bg-white/80 px-4 font-medium sm:max-w-[95vw] sm:justify-between sm:px-20 sm:py-4",
+        "text-foreground sticky top-6 z-50 mx-auto flex h-14 w-full max-w-[90vw] items-center justify-around rounded-full bg-white/90 px-4 font-medium sm:max-w-[95vw] sm:justify-between sm:px-20 sm:py-4",
         isMobile && "gap-y-1",
         className,
       )}
@@ -61,7 +61,7 @@ export const Navbar = ({ className }: NavbarProps) => {
         </span>
       </div>
       <div className="flex items-center gap-x-10 font-semibold sm:font-medium">
-        <Link href="#hours">Open Hours</Link>
+        <Link href="/test">Open Hours</Link>
         <Link href="#program">Program</Link>
       </div>
     </div>
