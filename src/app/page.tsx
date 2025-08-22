@@ -61,12 +61,25 @@ export default function Test() {
       onEnter: () => {
         // console.log("onEnter");
         madeByRef.current?.classList.add("bg-fixed");
-        bgRef.current?.classList.add("fixed");
       },
 
       onEnterBack: () => {
         // console.log("onEnterBack");
         madeByRef.current?.classList.remove("bg-fixed");
+      },
+      markers: true,
+    });
+    ScrollTrigger.create({
+      trigger: madeByRef.current,
+      start: "top-100px top",
+      end: "html",
+      onEnter: () => {
+        // console.log("onEnter");
+        bgRef.current?.classList.add("fixed");
+      },
+
+      onEnterBack: () => {
+        // console.log("onEnterBack");
         bgRef.current?.classList.remove("fixed");
       },
       markers: true,
