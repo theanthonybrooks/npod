@@ -12,7 +12,8 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Test() {
   // const startRef = useRef<HTMLDivElement | null>(null);
-  // const endRef = useRef<HTMLDivElement | null>(null);
+  const bgRef = useRef<HTMLDivElement | null>(null);
+
   const madeByRef = useRef<HTMLDivElement | null>(null);
   //   useGSAP(() => {
   //     // gsap.timeline({
@@ -60,11 +61,13 @@ export default function Test() {
       onEnter: () => {
         // console.log("onEnter");
         madeByRef.current?.classList.add("bg-fixed");
+        bgRef.current?.classList.add("fixed");
       },
 
       onEnterBack: () => {
         // console.log("onEnterBack");
         madeByRef.current?.classList.remove("bg-fixed");
+        bgRef.current?.classList.remove("fixed");
       },
       markers: true,
     });
@@ -82,7 +85,7 @@ export default function Test() {
     <>
       <div className="wrap-all">
         <Navbar />
-        {/* <div className="bg" ref={bgRef}></div> */}
+        <div className="bg" ref={bgRef}></div>
         <main className="row-start-2 -mt-20 grid min-h-screen grid-rows-[auto_1fr_auto] items-center justify-items-center text-center font-sans text-white/90 sm:items-start">
           <header
             className="panel flex w-full flex-col items-start pt-40 font-black text-white/90 uppercase"
