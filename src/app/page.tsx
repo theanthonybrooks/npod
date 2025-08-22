@@ -147,9 +147,11 @@ export default function Test() {
                 water, labor, and land sustain the abundance of Europe&apos;s
                 food system.{" "}
               </h2>
-              <span className="text-foreground flex w-max flex-col items-start rounded-4xl bg-white/90 p-6">
-                <p className="text-lg font-bold">Hase Studio</p>
-                <p className="italic">Weisestrasse 22, 12049, Berlin</p>
+              <span className="text-foreground flex w-full flex-col items-start rounded-4xl bg-white/90 px-6 py-3 sm:w-max">
+                <p className="!font-ubuntu font-bold">Hase Studio</p>
+                <p className="!font-ubuntu text-[15px] italic">
+                  Weisestrasse 22, 12049, Berlin
+                </p>
               </span>
             </div>
           </section>
