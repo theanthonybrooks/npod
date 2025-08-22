@@ -15,7 +15,9 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Test() {
   const isAppleDevice = useAppleDevice();
   console.log(isAppleDevice);
-  const [bgFixed, setBgFixed] = useState(false);
+  const [bgFade, setBgFade] = useState(false);
+  console.log("bg fade", bgFade);
+  const [madeFixed, setMadeFixed] = useState(false);
   // const startRef = useRef<HTMLDivElement | null>(null);
   const bgRef = useRef<HTMLDivElement | null>(null);
 
@@ -68,34 +70,29 @@ export default function Test() {
       onEnter: () => {
         // console.log("onEnter");
         // madeByRef.current?.classList.add("bg-fixed");
-        setBgFixed(true);
+        setMadeFixed(true);
       },
 
       onEnterBack: () => {
         // console.log("onEnterBack");
         // madeByRef.current?.classList.remove("bg-fixed");
-        setBgFixed(false);
+        setMadeFixed(false);
       },
       // markers: true,
     });
     ScrollTrigger.create({
       trigger: made,
-      start: "top-100px top",
+      start: "top top",
       end: "html",
-      // onEnter: () => {
-      //   // console.log("onEnter");
-      //   bgRef.current?.classList.add("fixed");
-      // },
 
-      // onEnterBack: () => {
-      //   // console.log("onEnterBack");
-      //   bgRef.current?.classList.remove("fixed");
-      // },
-      onEnter: () =>
-        gsap.to(bg, { autoAlpha: 0, duration: 0.6, ease: "power2.out" }),
-      onEnterBack: () =>
-        gsap.to(bg, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }),
-      // markers: true,
+      onEnter: () => {
+        setBgFade(true);
+      },
+
+      onEnterBack: () => {
+        setBgFade(false);
+      },
+      markers: true,
     });
 
     const handleLoad = () => ScrollTrigger.refresh();
@@ -113,7 +110,13 @@ export default function Test() {
     <>
       <div className="wrap-all">
         <Navbar />
-        {/* <div className={cn("bg", !isAppleDevice && "hidden")} ref={bgRef}></div> */}
+        <div
+          className={cn(
+            "bg transition-opacity",
+            // bgFade ? "opacity-0" : "opacity-100",
+          )}
+          ref={bgRef}
+        />
         <main className="row-start-2 -mt-20 grid min-h-screen grid-rows-[auto_1fr_auto] items-center justify-items-center text-center font-sans text-white/90 sm:items-start">
           <header
             // className="panel flex h-screen w-full flex-col items-start bg-[url('/images/1.jpg')] bg-[length:auto_100vh] bg-top bg-no-repeat pt-40 font-black text-white/90 uppercase"
@@ -166,9 +169,10 @@ export default function Test() {
           <section
             id="madeby"
             className={cn(
-              "bg-[url('/images/5.jpg')]",
+              !isAppleDevice && "bg-[url('/images/5.jpg')]",
+              isAppleDevice && !bgFade && "bg-[url('/images/5.jpg')]",
               panelClass,
-              bgFixed && "bg-fixed",
+              madeFixed && "bg-fixed",
             )}
             ref={madeByRef}
           >
