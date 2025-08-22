@@ -86,8 +86,20 @@ body {
 }
 
 header {
-  background-image: url(/images/1.jpg);
+  /* background-image: url(/images/1.jpg);
+  background-size: auto 100vh;
+  background-repeat: no-repeat;
+  background-position: top center;
+  */
+  background: url(/images/1.jpg) no-repeat top center / auto 100vh;
   height: 100vh;
+
+  @media (width <= 768px) {
+    background-size: auto 100vh;
+  }
+  @media (width > 768px > 1400px) {
+    background-size: auto;
+  }
   /* opacity: 50%; */
 }
 
