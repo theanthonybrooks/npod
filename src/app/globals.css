@@ -88,6 +88,13 @@ body {
 header {
   background-image: url(/images/1.jpg);
   height: 100vh;
+  /* opacity: 50%; */
+}
+
+/* #support {
+  background-image: url();
+} */
+.panel {
   background-size: auto 100vh; /* 100vw auto; */
   background-repeat: no-repeat;
   background-position: top center;
@@ -97,64 +104,21 @@ header {
   @media (width > 768px > 1400px) {
     background-size: auto;
   }
-  /* opacity: 50%; */
-}
-
-/* #support {
-  background-image: url();
-} */
-.panel {
   &.bg-fixed {
     background-attachment: fixed;
   }
 
   &#intro {
     background-image: url(/images/2.jpg);
-    background-size: auto 100vh; /* 100vw auto; */
-    background-repeat: no-repeat;
-    background-position: top center;
-    @media (width <= 768px) {
-      background-size: auto 100vh;
-    }
-    @media (width > 768px > 1400px) {
-      background-size: auto;
-    }
   }
   &#hours {
     background-image: url(/images/3.jpg);
-    background-size: auto 100vh; /* 100vw auto; */
-    background-repeat: no-repeat;
-    background-position: top center;
-    @media (width <= 768px) {
-      background-size: auto 100vh;
-    }
-    @media (width > 768px > 1400px) {
-      background-size: auto;
-    }
   }
   &#program {
     background-image: url(/images/4.jpg);
-    background-size: auto 100vh; /* 100vw auto; */
-    background-repeat: no-repeat;
-    background-position: top center;
-    @media (width <= 768px) {
-      background-size: auto 100vh;
-    }
-    @media (width > 768px > 1400px) {
-      background-size: auto;
-    }
   }
   &#madeby {
     background-image: url(/images/5.jpg);
-    background-size: auto 100vh; /* 100vw auto; */
-    background-repeat: no-repeat;
-    background-position: top center;
-    @media (width <= 768px) {
-      background-size: auto 100vh;
-    }
-    @media (width > 768px > 1400px) {
-      background-size: auto;
-    }
     /* background-attachment: fixed; */
   }
 }
