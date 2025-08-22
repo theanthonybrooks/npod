@@ -1,5 +1,6 @@
 "use client";
 
+import { BackToTop } from "@/app/ui/components/back-to-top";
 import { Navbar } from "@/app/ui/components/navbar";
 import { useAppleDevice } from "@/contexts/apple-device-context";
 import { cn } from "@/utils/utils";
@@ -14,49 +15,14 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Test() {
   const isAppleDevice = useAppleDevice();
-  console.log("meApple", isAppleDevice);
+
   const [bgFade, setBgFade] = useState(false);
-  console.log("bg fade", bgFade);
   const [madeFixed, setMadeFixed] = useState(false);
+  const [backToTop, setBackToTop] = useState(false);
   // const startRef = useRef<HTMLDivElement | null>(null);
   const bgRef = useRef<HTMLDivElement | null>(null);
 
   const madeByRef = useRef<HTMLDivElement | null>(null);
-  //   useGSAP(() => {
-  //     // gsap.timeline({
-  //     //   scrollTrigger: {
-  //     //     trigger: ".start-trig",
-  //     //     pin: ".bg-container",
-  //     //     pinSpacing: false,
-  //     //     start: "top top",
-  //     //     onToggle: ({ isActive }) => {
-  //     //       console.log(isActive);
-  //     //     },
-  //     //     onUpdate: () => {
-  //     //       console.log("update");
-  //     //     },
-  //     //     endTrigger: "#triggerEnd",
-  //     //     end: "bottom bottom",
-  //     //     markers: true,
-  //     //   },
-  //     // });
-  //     ScrollTrigger.create({
-  //       trigger: startRef.current,
-  //       pin: bgRef.current,
-  //       pinSpacing: false,
-  //       start: "top top",
-  //       onToggle: ({ isActive }) => {
-  //         console.log(isActive);
-  //       },
-  //       onUpdate: () => {
-  //         console.log("update");
-  //       },
-  //       endTrigger: endRef.current,
-  //       end: "top top",
-  //       markers: true,
-  //       invalidateOnRefresh: true,
-  //     });
-  //   });
 
   useGSAP(() => {
     const bg = bgRef.current;
@@ -68,14 +34,10 @@ export default function Test() {
       start: "top top",
       end: "bottom bottom",
       onEnter: () => {
-        // console.log("onEnter");
-        // madeByRef.current?.classList.add("bg-fixed");
         setMadeFixed(true);
       },
 
       onEnterBack: () => {
-        // console.log("onEnterBack");
-        // madeByRef.current?.classList.remove("bg-fixed");
         setMadeFixed(false);
       },
       // markers: true,
@@ -92,7 +54,7 @@ export default function Test() {
       onEnterBack: () => {
         setBgFade(false);
       },
-      markers: true,
+      // markers: true,
     });
 
     const handleLoad = () => ScrollTrigger.refresh();
@@ -168,7 +130,7 @@ export default function Test() {
             </div>
           </section>
           <section
-            id="madeby"
+            id="about"
             className={cn(
               !isAppleDevice && "bg-[url('/images/5.jpg')]",
               isAppleDevice && !bgFade && "bg-[url('/images/5.jpg')]",
@@ -214,6 +176,7 @@ export default function Test() {
             </div>
           </footer>
         </main>
+        <BackToTop />
       </div>
     </>
   );
