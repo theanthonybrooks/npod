@@ -103,7 +103,7 @@ export default function Test() {
           >
             <div
               className={cn(
-                "mx-auto flex h-full w-full max-w-[85vw] flex-col items-start justify-center text-white/90 sm:justify-start sm:pt-10",
+                "mx-auto flex h-full w-full max-w-[85vw] flex-col items-start justify-center text-white/90 sm:pt-10",
               )}
               style={{
                 fontSize: "clamp(3rem, 11vw, 14rem)",
@@ -137,19 +137,20 @@ export default function Test() {
           <section
             id="intro"
             className={cn(
-              "grid items-center justify-center bg-[url('/images/2.jpg')] px-10 sm:grid-cols-2",
+              "grid items-center justify-center bg-[url('/images/2.jpg')] px-10 sm:grid-cols-2 sm:items-end",
               panelClass,
             )}
           >
             <div className="flex flex-col items-start gap-12 sm:col-start-2 sm:pr-10">
-              <h2 className="text-left text-4xl font-bold">
+              <h2 className="text-left text-5xl leading-[1.1] font-bold">
                 An exhibition on the fragile infrastructures of nourishment; how
                 water, labor, and land sustain the abundance of Europe&apos;s
-                food system.{" "}
+                food system.
               </h2>
-              <span className="text-foreground flex w-full flex-col items-start rounded-4xl bg-white/90 px-6 py-3 sm:w-max">
-                <p className="!font-ubuntu font-bold">Hase Studio</p>
-                <p className="!font-ubuntu text-[15px] italic">
+              {/* TODO: add address link to google maps */}
+              <span className="text-foreground flex w-full flex-col items-start rounded-4xl bg-white/90 px-6 py-3 sm:w-[350px]">
+                <p className="!font-ubuntu text-xl font-bold">Hase Studio</p>
+                <p className="!font-ubuntu text-[1.2rem] italic">
                   Weisestrasse 22, 12049, Berlin
                 </p>
               </span>
