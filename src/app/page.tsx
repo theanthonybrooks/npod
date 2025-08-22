@@ -125,7 +125,7 @@ export default function Test() {
                 }
               }}
               className={cn(
-                "absolute bottom-4 left-1/2 -translate-x-1/2 transition-opacity",
+                "absolute bottom-2 left-1/2 -translate-x-1/2 transition-opacity",
                 hiddenScrollDown && "opacity-0",
               )}
             >
@@ -135,11 +135,21 @@ export default function Test() {
 
           <section
             id="intro"
-            className={cn("bg-[url('/images/2.jpg')]", panelClass)}
+            className={cn(
+              "grid grid-cols-2 items-center bg-[url('/images/2.jpg')]",
+              panelClass,
+            )}
           >
-            <div className="wrap center">
-              <h2 className="lines">Section Two</h2>
-              <h2 className="lines">AND.</h2>
+            <div className="col-start-2 flex flex-col items-start gap-12 pr-10">
+              <h2 className="text-left text-4xl font-bold">
+                An exhibition on the fragile infrastructures of nourishment; how
+                water, labor, and land sustain the abundance of Europe&apos;s
+                food system.{" "}
+              </h2>
+              <span className="text-foreground flex w-max flex-col items-start rounded-4xl bg-white/90 p-6">
+                <p className="text-lg font-bold">Hase Studio</p>
+                <p className="italic">Weisestrasse 22, 12049, Berlin</p>
+              </span>
             </div>
           </section>
 
