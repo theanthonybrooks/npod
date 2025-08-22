@@ -38,16 +38,10 @@
 body {
   /* background-color: white; */
   margin: 0;
-  background-image: url(/images/5.jpg);
-  /* opacity: 50%; */
-  background-size: auto 100vh; /* 100vw auto; */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: top center;
 
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+
   @media (width <= 768px) {
     background-size: auto 100vh;
   }
@@ -61,6 +55,12 @@ body {
 
 .wrap-all {
   position: relative;
+  background-image: url(/images/5.jpg);
+  /* opacity: 50%; */
+  background-size: auto 100vh; /* 100vw auto; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top center;
 }
 .bg {
   position: absolute;

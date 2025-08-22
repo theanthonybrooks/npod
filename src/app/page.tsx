@@ -66,6 +66,7 @@ export default function Test() {
         // console.log("onEnterBack");
         madeByRef.current?.classList.remove("bg-fixed");
       },
+      markers: true,
     });
 
     const handleLoad = () => ScrollTrigger.refresh();
