@@ -97,7 +97,7 @@ export default function Test() {
           <header
             // className="panel flex h-screen w-full flex-col items-start bg-[url('/images/1.jpg')] bg-[length:auto_100vh] bg-top bg-no-repeat pt-40 font-black text-white/90 uppercase"
             className={cn(
-              "panel relative w-full bg-[url('/images/1.jpg')] pt-40",
+              "panel relative w-full bg-[url('/images/1.jpg')] pt-20 sm:pt-40",
               panelClass,
             )}
           >
@@ -142,13 +142,13 @@ export default function Test() {
             )}
           >
             <div className="flex flex-col items-start gap-12 sm:col-start-2 sm:pr-10">
-              <h2 className="text-left text-5xl leading-[1.1] font-bold">
+              <h2 className="text-left text-4xl font-bold sm:text-5xl sm:leading-[1.1]">
                 An exhibition on the fragile infrastructures of nourishment; how
                 water, labor, and land sustain the abundance of Europe&apos;s
                 food system.
               </h2>
               {/* TODO: add address link to google maps */}
-              <span className="text-foreground flex w-full flex-col items-start rounded-4xl bg-white/90 px-6 py-3 sm:w-[350px]">
+              <span className="text-foreground flex w-full flex-col items-start rounded-4xl bg-white/90 px-6 py-4 sm:w-[350px]">
                 <p className="!font-ubuntu text-xl font-bold">Hase Studio</p>
                 <p className="!font-ubuntu text-[1.2rem] italic">
                   Weisestrasse 22, 12049, Berlin
