@@ -162,16 +162,7 @@ export default function Test() {
                 </span>
               </div>
               <div id="hours" />
-            </div>
-          </section>
-
-          <section className={cn("bg-[url('/images/3.jpg')]", panelClass)}>
-            <div
-              className={cn(
-                "m-auto flex h-full max-w-[85vw] grid-rows-2 flex-col content-between items-start justify-between lg:grid lg:grid-cols-2 lg:justify-center",
-              )}
-            >
-              <div className="flex flex-col items-start gap-4 sm:col-start-1 sm:gap-8">
+              <div className="flex flex-col items-start gap-4 sm:col-start-1 sm:hidden sm:gap-8">
                 <h2 className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]">
                   Open Hours
                 </h2>
@@ -184,8 +175,30 @@ export default function Test() {
                   <p>Saturday - Sunday: 12 pm - 7 pm</p>
                 </span>
               </div>
-              <div id="program" />
-              <div className="col-start-2 row-start-2 flex flex-col gap-8 sm:items-center">
+            </div>
+          </section>
+
+          <section className={cn("bg-[url('/images/3.jpg')]", panelClass)}>
+            <div
+              className={cn(
+                "lg:justify-items m-auto flex h-full max-w-[85vw] flex-col content-between items-start justify-between lg:grid lg:grid-cols-2 lg:grid-rows-1",
+              )}
+            >
+              <div className="hidden h-full flex-col items-start gap-4 sm:col-start-1 sm:flex sm:gap-8">
+                <h2 className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]">
+                  Open Hours
+                </h2>
+
+                <span className="flex w-full flex-col items-start gap-1 text-xl font-semibold sm:gap-2 sm:text-3xl sm:font-medium">
+                  <p>
+                    Opening on September 5<sup>th</sup> at 7 pm
+                  </p>
+                  <p>Wednesday - Friday: 4 pm - 7 pm</p>
+                  <p>Saturday - Sunday: 12 pm - 7 pm</p>
+                </span>
+              </div>
+              <div className="flex h-full flex-1 flex-col justify-end gap-8 sm:items-center">
+                <div id="program" />
                 {/* TODO: Add appropriate event depending on the current date and what has passed. */}
                 <h2 className="font-ubuntu text-center text-4xl font-medium text-white/90 sm:text-6xl sm:leading-[1.1]">
                   Program
@@ -213,6 +226,7 @@ export default function Test() {
                   </Link>
                 </div>
               </div>
+              <p className="justify-self-end">pppp</p>
             </div>
           </section>
           <section
