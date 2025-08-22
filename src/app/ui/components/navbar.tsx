@@ -61,7 +61,7 @@ export const Navbar = ({ className }: NavbarProps) => {
         </span>
       </div>
       <div className="flex items-center gap-x-10 font-semibold sm:font-medium">
-        <Link href="/test">Open Hours</Link>
+        <Link href="#hours">Open Hours</Link>
         <Link href="#program">Program</Link>
       </div>
     </div>

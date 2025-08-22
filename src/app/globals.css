@@ -46,8 +46,24 @@ body {
 } */
 
 body {
-  background-color: white;
+  /* background-color: white; */
   margin: 0;
+  background-image: url(/images/5.jpg);
+  /* opacity: 50%; */
+  background-size: auto 100vh; /* 100vw auto; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top center;
+
+  @media (width <= 768px) {
+    background-size: auto 100vh;
+  }
+  @media (width > 768px > 1400px) {
+    background-size: auto;
+  }
+  /* @media (width > 1400px) {
+    background-size: 100vw auto;
+  } */
 }
 
 .wrap-all {
@@ -60,20 +76,56 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-image: url(https://departure.zerenoruc.com/images/backg_large_longer.jpg);
-  /* opacity: 50%; */
-  background-size: auto; /* 100vw auto; */
-  background-repeat: no-repeat;
-  background-position: top center;
+
   /* @media (width <= 768px) {
     background-size: 1800px auto;
   } */
 }
 
+header {
+  background-image: url(/images/1.jpg);
+  height: 100vh;
+  /* opacity: 50%; */
+}
+
+#intro {
+  background-image: url(/images/2.jpg);
+}
+#hours {
+  background-image: url(/images/3.jpg);
+}
+#program {
+  background-image: url(/images/4.jpg);
+}
+#madeby {
+  background-image: url(/images/5.jpg);
+  /* background-attachment: fixed; */
+}
+/* #support {
+  background-image: url();
+} */
+.panel {
+  background-size: auto 100vh; /* 100vw auto; */
+  background-repeat: no-repeat;
+  background-position: top center;
+  @media (width <= 768px) {
+    background-size: auto 100vh;
+  }
+  @media (width > 768px > 1400px) {
+    background-size: auto;
+  }
+  &.bg-fixed {
+    background-attachment: fixed;
+  }
+  /* @media (width > 1400px) {
+    background-size: 100vw auto;
+  } */
+}
+
 section {
   width: 100%;
-  height: 100dvh;
-  border-bottom: 1px solid black;
+  height: 100vh;
+  /* border-bottom: 1px solid black; */
 }
 
 .wrap {
