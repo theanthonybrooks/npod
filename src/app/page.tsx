@@ -10,7 +10,13 @@ import { useRef } from "react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function Test() {
+interface TestProps {
+  isAppleDevice?: boolean;
+}
+
+export default function Test({ isAppleDevice }: TestProps) {
+  console.log(isAppleDevice);
+
   // const startRef = useRef<HTMLDivElement | null>(null);
   const bgRef = useRef<HTMLDivElement | null>(null);
 
