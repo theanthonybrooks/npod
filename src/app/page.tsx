@@ -103,17 +103,17 @@ export default function Test() {
           >
             <div
               className={cn(
-                "mx-auto flex h-full w-full max-w-[90vw] flex-col items-start justify-center font-black text-white/90 uppercase sm:max-w-[85vw] sm:justify-start sm:pt-10",
+                "mx-auto flex h-full w-full max-w-[85vw] flex-col items-start justify-center text-white/90 sm:justify-start sm:pt-10",
               )}
               style={{
-                fontSize: "clamp(2rem, 11vw, 14rem)",
-                lineHeight: "clamp(2rem, 12vw, 9rem)",
+                fontSize: "clamp(3rem, 11vw, 14rem)",
+                lineHeight: "clamp(3rem, 10vw, 12rem)",
               }}
             >
               <h1>No Point</h1>
               <h1>Of</h1>
               <h1>Departure</h1>
-              <span className="mt-4 block text-lg sm:hidden">
+              <span className="font-ubuntu mt-4 block text-xl font-semibold sm:hidden">
                 September 5<sup>th</sup> - 14<sup>th</sup>
               </span>
             </div>
