@@ -200,7 +200,7 @@ export default function Test() {
               <div className="flex h-full flex-1 flex-col justify-end gap-8 sm:items-center">
                 <div id="program" />
                 {/* TODO: Add appropriate event depending on the current date and what has passed. */}
-                <h2 className="font-ubuntu text-center text-4xl font-medium text-white/90 sm:text-6xl sm:leading-[1.1]">
+                <h2 className="font-ubuntu w-full text-start text-4xl font-medium text-white/90 sm:text-6xl sm:leading-[1.1] lg:text-center">
                   Program
                 </h2>
 
