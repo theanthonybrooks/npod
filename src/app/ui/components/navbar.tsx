@@ -11,6 +11,7 @@ import { useState } from "react";
 
 interface NavbarProps {
   className?: string;
+  page?: "home" | "program";
 }
 const navbarVariants: Variants = {
   initial: {
@@ -31,9 +32,10 @@ const navbarVariants: Variants = {
   },
 };
 
-export const Navbar = ({ className }: NavbarProps) => {
+export const Navbar = ({ className, page }: NavbarProps) => {
   const isMobile = useIsMobile();
-
+  const programPage = page === "program";
+  const homePage = page === "home";
   const { scrollY } = useScroll();
   const [navTrigger, setNavTrigger] = useState(false);
 
@@ -47,12 +49,19 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   return (
     <motion.div
-      animate={isMobile ? (navTrigger ? "enter" : "exit") : "desktop"}
+      animate={
+        isMobile && page !== "program"
+          ? navTrigger
+            ? "enter"
+            : "exit"
+          : "desktop"
+      }
       variants={navbarVariants}
       className={cn(
-        "text-foreground font-ubuntu sticky top-6 z-50 mx-auto flex h-14 w-full max-w-[85vw] items-center justify-around rounded-full bg-white/90 px-4 font-medium sm:max-w-[84vw] sm:justify-between sm:px-20 sm:py-4",
+        "text-foreground font-ubuntu sticky top-6 z-50 mx-auto flex h-14 w-full max-w-[85vw] items-center justify-between rounded-full bg-white/90 px-6 pr-10 font-medium sm:max-w-[84vw] sm:py-4",
         isMobile && "gap-y-1",
         className,
+        programPage && "px-6",
       )}
     >
       <div className="flex items-center gap-x-10">
@@ -62,19 +71,22 @@ export const Navbar = ({ className }: NavbarProps) => {
             // isMobile && "absolute left-4 top-4"
           )}
         />
-        <span className="hidden sm:block">
+        <span className="hidden lg:block">
           September 5<sup>th</sup> - 14<sup>th</sup>
         </span>
       </div>
       <div className="flex items-center gap-x-10">
-        <Link href="#hours">Open Hours</Link>
-        <Link href="#program">Program</Link>
-        <Link href="#about" className="hidden sm:block">
-          About
-        </Link>
-        <Link href="#support" className="hidden sm:block">
-          Prints
-        </Link>
+        <>
+          <Link href="/#hours">Open Hours</Link>
+          {!programPage && <Link href="/program">Program</Link>}
+          <Link href="/#about" className="hidden sm:block">
+            About
+          </Link>
+          <Link href="/#support" className="hidden sm:block">
+            Prints
+          </Link>
+        </>
+        {programPage && <Link href="/">Home</Link>}
       </div>
     </motion.div>
   );

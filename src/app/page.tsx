@@ -83,7 +83,7 @@ export default function Test() {
   return (
     <>
       <div className="wrap-all">
-        <Navbar />
+        <Navbar page="home" />
 
         <div
           className={cn(
@@ -113,7 +113,7 @@ export default function Test() {
               <h1>No Point</h1>
               <h1>Of</h1>
               <h1>Departure</h1>
-              <span className="font-ubuntu mt-4 block text-xl font-semibold sm:hidden">
+              <span className="font-ubuntu mt-4 block text-xl font-semibold sm:text-2xl lg:hidden">
                 September 5<sup>th</sup> - 14<sup>th</sup>
               </span>
             </div>
@@ -171,131 +171,34 @@ export default function Test() {
                 "m-auto grid h-full max-w-[85vw] items-center justify-center sm:grid-cols-2",
               )}
             >
-              <div className="flex flex-col items-start gap-8 sm:col-start-1">
-                <h2 className="font-ubuntu text-left text-[1.7rem] font-medium sm:text-6xl sm:leading-[1.1]">
+              <div className="flex flex-col items-start gap-4 sm:col-start-1 sm:gap-8">
+                <h2 className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]">
                   Open Hours
                 </h2>
 
-                <span className="flex w-full flex-col items-start gap-2">
-                  <p className="text-3xl font-medium">
+                <span className="flex w-full flex-col items-start gap-1 text-xl font-semibold sm:gap-2 sm:text-3xl sm:font-medium">
+                  <p>
                     Opening on September 5<sup>th</sup> at 7 pm
                   </p>
-                  <p className="text-3xl font-medium">
-                    Wednesday - Friday: 4 pm - 7 pm
-                  </p>
-                  <p className="text-3xl font-medium">
-                    Saturday - Sunday: 12 pm - 7 pm
-                  </p>
+                  <p>Wednesday - Friday: 4 pm - 7 pm</p>
+                  <p>Saturday - Sunday: 12 pm - 7 pm</p>
                 </span>
               </div>
             </div>
           </section>
           <section
-            id="program"
+            id="about"
             className={cn("bg-[url('/images/4.jpg')]", panelClass)}
           >
             <div
               className={cn(
                 "m-auto flex h-full max-w-[85vw] items-center justify-center",
               )}
-            >
-              <div className="flex flex-col items-center gap-8">
-                <h2 className="font-ubuntu text-left text-[1.7rem] font-medium sm:text-6xl sm:leading-[1.1]">
-                  Program
-                </h2>
-
-                <div className="text-foreground flex w-full flex-col items-start gap-6">
-                  <div className="flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 px-14">
-                    <p className="font-ubuntu text-2xl font-medium">
-                      Reading Landscapes from Above: Maps, Satellites, and
-                      Visualizations
-                    </p>
-                    <p className="italic">September 6th, 4 - 6 pm</p>
-                    <p className="text-start font-medium">
-                      A guided exploration on how landscapes are represented
-                      through data and satellite images. Taking examples from
-                      Sentinel visualizations of Almería, we&apos;ll explore how
-                      mapping reveals ecological stress and human impact, while
-                      also questioning the limits of Western gaze on geography.
-                    </p>
-                  </div>
-                  <div className="flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 px-14">
-                    <p className="font-ubuntu text-2xl font-medium">
-                      Reading Landscapes from Above: Maps, Satellites, and
-                      Visualizations
-                    </p>
-                    <p className="italic">September 6th, 4 - 6 pm</p>
-                    <p className="text-start font-medium">
-                      A guided exploration on how landscapes are represented
-                      through data and satellite images. Taking examples from
-                      Sentinel visualizations of Almería, we&apos;ll explore how
-                      mapping reveals ecological stress and human impact, while
-                      also questioning the limits of Western gaze on geography.
-                    </p>
-                  </div>
-                  <div className="flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 px-14">
-                    <p className="font-ubuntu text-2xl font-medium">
-                      Reading Landscapes from Above: Maps, Satellites, and
-                      Visualizations
-                    </p>
-                    <p className="italic">September 6th, 4 - 6 pm</p>
-                    <p className="text-start font-medium">
-                      A guided exploration on how landscapes are represented
-                      through data and satellite images. Taking examples from
-                      Sentinel visualizations of Almería, we&apos;ll explore how
-                      mapping reveals ecological stress and human impact, while
-                      also questioning the limits of Western gaze on geography.
-                    </p>
-                  </div>
-                  <div className="flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 px-14">
-                    <p className="font-ubuntu text-2xl font-medium">
-                      Reading Landscapes from Above: Maps, Satellites, and
-                      Visualizations
-                    </p>
-                    <p className="italic">September 6th, 4 - 6 pm</p>
-                    <p className="text-start font-medium">
-                      A guided exploration on how landscapes are represented
-                      through data and satellite images. Taking examples from
-                      Sentinel visualizations of Almería, we&apos;ll explore how
-                      mapping reveals ecological stress and human impact, while
-                      also questioning the limits of Western gaze on geography.
-                    </p>
-                  </div>
-                  <div className="flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 px-14">
-                    <p className="font-ubuntu text-2xl font-medium">
-                      Reading Landscapes from Above: Maps, Satellites, and
-                      Visualizations
-                    </p>
-                    <p className="italic">September 6th, 4 - 6 pm</p>
-                    <p className="text-start font-medium">
-                      A guided exploration on how landscapes are represented
-                      through data and satellite images. Taking examples from
-                      Sentinel visualizations of Almería, we&apos;ll explore how
-                      mapping reveals ecological stress and human impact, while
-                      also questioning the limits of Western gaze on geography.
-                    </p>
-                  </div>
-                  <div className="flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 px-14">
-                    <p className="font-ubuntu text-2xl font-medium">
-                      Reading Landscapes from Above: Maps, Satellites, and
-                      Visualizations
-                    </p>
-                    <p className="italic">September 6th, 4 - 6 pm</p>
-                    <p className="text-start font-medium">
-                      A guided exploration on how landscapes are represented
-                      through data and satellite images. Taking examples from
-                      Sentinel visualizations of Almería, we&apos;ll explore how
-                      mapping reveals ecological stress and human impact, while
-                      also questioning the limits of Western gaze on geography.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ></div>
           </section>
 
           <section
-            id="about"
+            id="support"
             className={cn(
               !isAppleDevice && "bg-[url('/images/5.jpg')]",
               isAppleDevice && !bgFade && "bg-[url('/images/5.jpg')]",
@@ -307,13 +210,6 @@ export default function Test() {
             <div className="wrap center">
               <h2 className="lines">Section Five</h2>
               <h2 className="lines">a SMILE</h2>
-            </div>
-          </section>
-
-          <section id="support" className="panel">
-            <div className="wrap center">
-              <h2 className="lines">Section Six</h2>
-              <h2 className="lines">and SOME</h2>
             </div>
           </section>
 
