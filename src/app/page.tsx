@@ -2,6 +2,7 @@
 
 import { Navbar } from "@/app/ui/components/navbar";
 import { useAppleDevice } from "@/contexts/apple-device-context";
+import { cn } from "@/utils/utils";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 
@@ -98,6 +99,8 @@ export default function Test() {
     };
   });
 
+  const panelClass = "h-screen  bg-no-repeat bg-top  bg-[length:auto_100vh]";
+
   return (
     <>
       <div className="wrap-all">
@@ -105,7 +108,11 @@ export default function Test() {
         <div className="bg" ref={bgRef}></div>
         <main className="row-start-2 -mt-20 grid min-h-screen grid-rows-[auto_1fr_auto] items-center justify-items-center text-center font-sans text-white/90 sm:items-start">
           <header
-            className="panel flex h-screen w-full flex-col items-start bg-[url('/images/1.jpg')] bg-[length:auto_100vh] bg-top bg-no-repeat pt-40 font-black text-white/90 uppercase"
+            // className="panel flex h-screen w-full flex-col items-start bg-[url('/images/1.jpg')] bg-[length:auto_100vh] bg-top bg-no-repeat pt-40 font-black text-white/90 uppercase"
+            className={cn(
+              "panel flex w-full flex-col items-start bg-[url('/images/1.jpg')] pt-40 font-black text-white/90 uppercase",
+              panelClass,
+            )}
             style={{
               fontSize: "clamp(2rem, 10vw, 12rem)",
               lineHeight: "clamp(2rem, 10vw, 7rem)",
@@ -119,27 +126,40 @@ export default function Test() {
             </span>
           </header>
 
-          <section id="intro" className="panel">
+          <section
+            id="intro"
+            className={cn("bg-[url('/images/2.jpg')]", panelClass)}
+          >
             <div className="wrap center">
               <h2 className="lines">Section Two</h2>
               <h2 className="lines">AND.</h2>
             </div>
           </section>
 
-          <section id="hours" className="panel">
+          <section
+            id="hours"
+            className={cn("bg-[url('/images/3.jpg')]", panelClass)}
+          >
             <div className="wrap center">
               <h2 className="lines">Section Three</h2>
               <h2 className="lines">a SMILE</h2>
             </div>
           </section>
 
-          <section id="program" className="panel">
+          <section
+            id="program"
+            className={cn("bg-[url('/images/4.jpg')]", panelClass)}
+          >
             <div className="wrap center">
               <h2 className="lines">Section Four</h2>
               <h2 className="lines">and SOME</h2>
             </div>
           </section>
-          <section id="madeby" className="panel" ref={madeByRef}>
+          <section
+            id="madeby"
+            className={cn("bg-[url('/images/5.jpg')]", panelClass)}
+            ref={madeByRef}
+          >
             <div className="wrap center">
               <h2 className="lines">Section Five</h2>
               <h2 className="lines">a SMILE</h2>
