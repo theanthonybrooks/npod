@@ -226,7 +226,6 @@ export default function Test() {
                   </Link>
                 </div>
               </div>
-              <p className="justify-self-end">pppp</p>
             </div>
           </section>
           <section
