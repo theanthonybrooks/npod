@@ -14,7 +14,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Test() {
   const isAppleDevice = useAppleDevice();
-  console.log(isAppleDevice);
+  console.log("meApple", isAppleDevice);
   const [bgFade, setBgFade] = useState(false);
   console.log("bg fade", bgFade);
   const [madeFixed, setMadeFixed] = useState(false);
@@ -113,6 +113,7 @@ export default function Test() {
         <div
           className={cn(
             "bg transition-opacity",
+            "bg-[url('/images/5.jpg')]",
             // bgFade ? "opacity-0" : "opacity-100",
           )}
           ref={bgRef}
