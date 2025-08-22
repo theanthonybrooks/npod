@@ -91,19 +91,6 @@ header {
   /* opacity: 50%; */
 }
 
-#intro {
-  background-image: url(/images/2.jpg);
-}
-#hours {
-  background-image: url(/images/3.jpg);
-}
-#program {
-  background-image: url(/images/4.jpg);
-}
-#madeby {
-  background-image: url(/images/5.jpg);
-  /* background-attachment: fixed; */
-}
 /* #support {
   background-image: url();
 } */
@@ -120,9 +107,20 @@ header {
   &.bg-fixed {
     background-attachment: fixed;
   }
-  /* @media (width > 1400px) {
-    background-size: 100vw auto;
-  } */
+
+  &#intro {
+    background-image: url(/images/2.jpg);
+  }
+  &#hours {
+    background-image: url(/images/3.jpg);
+  }
+  &#program {
+    background-image: url(/images/4.jpg);
+  }
+  &#madeby {
+    background-image: url(/images/5.jpg);
+    /* background-attachment: fixed; */
+  }
 }
 
 section {
