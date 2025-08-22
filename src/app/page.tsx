@@ -77,7 +77,7 @@ export default function Test() {
     };
   });
 
-  const panelClass = "h-[100dvh]  bg-no-repeat bg-top  bg-[length:auto_100dvh]";
+  const panelClass = "h-[100vh]  bg-no-repeat bg-top  bg-[length:auto_100vh]";
 
   const today = new Date();
   console.log(today.toISOString());

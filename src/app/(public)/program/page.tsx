@@ -21,11 +21,7 @@ export default function Program() {
         className={cn("bg-[url('/images/backg_large_longer.jpg')]", panelClass)}
       >
         <Navbar page="program" />
-        {/* <div
-          className={cn(
-            "fixed -z-10 h-[100dvh] bg-[url('/images/backg_large_longer.jpg')] bg-[length:auto_100dvh] bg-top bg-no-repeat",
-          )}
-        /> */}
+
         <div id="program" className={cn("py-10")}>
           <div
             className={cn(
