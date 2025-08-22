@@ -80,6 +80,9 @@ export default function Test() {
 
   const panelClass = "h-[100dvh]  bg-no-repeat bg-top  bg-[length:auto_100dvh]";
 
+  const today = new Date();
+  console.log(today.toISOString());
+
   return (
     <>
       <div className="wrap-all">
@@ -140,7 +143,7 @@ export default function Test() {
           >
             <div
               className={cn(
-                "m-auto grid h-full max-w-[85vw] items-center justify-center sm:grid-cols-2",
+                "m-auto grid h-full max-w-[85vw] items-center justify-center lg:grid-cols-2",
               )}
             >
               <div className="flex flex-col items-start gap-12 sm:col-start-2">
@@ -168,7 +171,7 @@ export default function Test() {
           >
             <div
               className={cn(
-                "m-auto grid h-full max-w-[85vw] items-center justify-center sm:grid-cols-2",
+                "m-auto grid h-full max-w-[85vw] grid-rows-2 content-between items-start justify-center lg:grid-cols-2",
               )}
             >
               <div className="flex flex-col items-start gap-4 sm:col-start-1 sm:gap-8">
@@ -183,6 +186,34 @@ export default function Test() {
                   <p>Wednesday - Friday: 4 pm - 7 pm</p>
                   <p>Saturday - Sunday: 12 pm - 7 pm</p>
                 </span>
+              </div>
+              <div className="col-start-2 row-start-2 flex flex-col gap-8 sm:items-center">
+                {/* TODO: Add appropriate event depending on the current date and what has passed. */}
+                <h2 className="font-ubuntu text-center text-4xl font-medium text-white/90 sm:text-6xl sm:leading-[1.1]">
+                  Program
+                </h2>
+
+                <div className="text-foreground flex w-full flex-col items-start gap-6">
+                  <div className="flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 sm:px-14">
+                    <p className="font-barlow text-left text-2xl font-semibold">
+                      Reading Landscapes from Above: Maps, Satellites, and
+                      Visualizations
+                    </p>
+                    <p className="font-medium italic">
+                      September 6th, 4 - 6 pm
+                    </p>
+                    <p className="text-start font-medium">
+                      A guided exploration on how landscapes are represented
+                      through data and satellite images. Taking examples from
+                      Sentinel visualizations of Almería, we&apos;ll explore how
+                      mapping reveals ecological stress and human impact, while
+                      also questioning the limits of Western gaze on geography.
+                    </p>
+                  </div>
+                </div>
+                <Link href="/program" className="text-lg font-medium">
+                  View full program
+                </Link>
               </div>
             </div>
           </section>
