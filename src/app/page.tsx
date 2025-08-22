@@ -105,7 +105,7 @@ export default function Test() {
         <div className="bg" ref={bgRef}></div>
         <main className="row-start-2 -mt-20 grid min-h-screen grid-rows-[auto_1fr_auto] items-center justify-items-center text-center font-sans text-white/90 sm:items-start">
           <header
-            className="panel flex w-full flex-col items-start pt-40 font-black text-white/90 uppercase"
+            className="panel flex h-screen w-full flex-col items-start bg-[url('/images/1.jpg')] bg-[length:auto_100vh] bg-top bg-no-repeat pt-40 font-black text-white/90 uppercase"
             style={{
               fontSize: "clamp(2rem, 10vw, 12rem)",
               lineHeight: "clamp(2rem, 10vw, 7rem)",
