@@ -33,7 +33,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn(geistSans.variable, geistMono.variable, "antialiased")}
+        className={cn(
+          geistSans.variable,
+          geistMono.variable,
+          "bg-[#2b51ba] antialiased",
+        )}
       >
         <AppleDeviceProvider isAppleDevice={isAppleDevice}>
           {children}
