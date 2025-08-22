@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-alfarn: "alfarn", sans-serif;
 }
 
 /* .bg-container {
@@ -51,6 +52,10 @@ body {
   /* @media (width > 1400px) {
     background-size: 100vw auto;
   } */
+}
+
+h1 {
+  font-family: "alfarn-2", sans-serif;
 }
 
 .wrap-all {

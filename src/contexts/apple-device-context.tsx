@@ -6,9 +6,9 @@ export interface AppleDeviceContextValue {
   isAppleDevice: boolean;
 }
 
-export const AppleDeviceContext = createContext<AppleDeviceContextValue | undefined>(
-  undefined
-);
+export const AppleDeviceContext = createContext<
+  AppleDeviceContextValue | undefined
+>(undefined);
 
 export function AppleDeviceProvider({
   isAppleDevice,
@@ -26,6 +26,7 @@ export function AppleDeviceProvider({
 
 export function useAppleDevice() {
   const ctx = useContext(AppleDeviceContext);
-  if (!ctx) throw new Error("useAppleDevice must be used inside AppleDeviceProvider");
+  if (!ctx)
+    throw new Error("useAppleDevice must be used inside AppleDeviceProvider");
   return ctx.isAppleDevice;
 }

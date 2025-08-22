@@ -45,13 +45,12 @@ export const Navbar = ({ className }: NavbarProps) => {
     }
   });
 
-  console.log(navTrigger);
   return (
     <motion.div
       animate={isMobile ? (navTrigger ? "enter" : "exit") : "desktop"}
       variants={navbarVariants}
       className={cn(
-        "text-foreground sticky top-6 z-50 mx-auto flex h-14 w-full max-w-[90vw] items-center justify-around rounded-full bg-white/90 px-4 font-semibold sm:max-w-[95vw] sm:justify-between sm:px-20 sm:py-4",
+        "text-foreground sticky top-6 z-50 mx-auto flex h-14 w-full max-w-[90vw] items-center justify-around rounded-full bg-white/90 px-4 font-semibold sm:max-w-[85vw] sm:justify-between sm:px-20 sm:py-4",
         isMobile && "gap-y-1",
         className,
       )}

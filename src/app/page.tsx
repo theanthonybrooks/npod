@@ -3,26 +3,38 @@
 import { BackToTop } from "@/app/ui/components/back-to-top";
 import { Navbar } from "@/app/ui/components/navbar";
 import { useAppleDevice } from "@/contexts/apple-device-context";
-import { cn } from "@/utils/utils";
+import { cn, useIsMobile } from "@/utils/utils";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { useMotionValueEvent, useScroll } from "motion/react";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { VscChevronDown } from "react-icons/vsc";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Test() {
   const isAppleDevice = useAppleDevice();
+  const isMobile = useIsMobile();
 
   const [bgFade, setBgFade] = useState(false);
   const [madeFixed, setMadeFixed] = useState(false);
-  const [backToTop, setBackToTop] = useState(false);
-  // const startRef = useRef<HTMLDivElement | null>(null);
-  const bgRef = useRef<HTMLDivElement | null>(null);
+  const [hiddenScrollDown, setHiddenScrollDown] = useState(false);
 
+  const bgRef = useRef<HTMLDivElement | null>(null);
   const madeByRef = useRef<HTMLDivElement | null>(null);
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest >= 100) {
+      setHiddenScrollDown(true);
+    } else {
+      setHiddenScrollDown(false);
+    }
+  });
 
   useGSAP(() => {
     const bg = bgRef.current;
@@ -84,20 +96,41 @@ export default function Test() {
           <header
             // className="panel flex h-screen w-full flex-col items-start bg-[url('/images/1.jpg')] bg-[length:auto_100vh] bg-top bg-no-repeat pt-40 font-black text-white/90 uppercase"
             className={cn(
-              "panel flex w-full flex-col items-start bg-[url('/images/1.jpg')] pt-40 font-black text-white/90 uppercase",
+              "panel relative w-full bg-[url('/images/1.jpg')] pt-40",
               panelClass,
             )}
-            style={{
-              fontSize: "clamp(2rem, 10vw, 12rem)",
-              lineHeight: "clamp(2rem, 10vw, 7rem)",
-            }}
           >
-            <p>No Point</p>
-            <p>Of</p>
-            <p>Departure</p>
-            <span className="mt-4 block text-lg sm:hidden">
-              September 5<sup>th</sup> - 14<sup>th</sup>
-            </span>
+            <div
+              className={cn(
+                "mx-auto flex w-full max-w-[90vw] flex-col items-start font-black text-white/90 uppercase sm:max-w-[85vw]",
+              )}
+              style={{
+                fontSize: "clamp(2rem, 11vw, 14rem)",
+                lineHeight: "clamp(2rem, 12vw, 9rem)",
+              }}
+            >
+              <h1>No Point</h1>
+              <h1>Of</h1>
+              <h1>Departure</h1>
+              <span className="mt-4 block text-lg sm:hidden">
+                September 5<sup>th</sup> - 14<sup>th</sup>
+              </span>
+            </div>
+            <button
+              aria-label="Scroll to intro section"
+              onClick={() => {
+                const intro = document.getElementById("intro");
+                if (intro) {
+                  intro.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className={cn(
+                "absolute bottom-4 left-1/2 -translate-x-1/2 transition-opacity",
+                hiddenScrollDown && "opacity-0",
+              )}
+            >
+              <VscChevronDown className="size-15 animate-bounce cursor-pointer text-white/90 hover:scale-110 active:scale-95" />
+            </button>
           </header>
 
           <section
@@ -168,10 +201,12 @@ export default function Test() {
             </div>
             <div className="flex items-center gap-8 text-white/90">
               <p>
-                <Link href="https://design.zerenoruc.com">Impressum</Link>
+                <Link href="https://zerenoruc.com/impressum">Impressum</Link>
               </p>
               <p>
-                <Link href="https://theanthonybrooks.com">Datenschutz</Link>
+                <Link href="https://zerenoruc.com/datenschutz">
+                  Datenschutz
+                </Link>
               </p>
             </div>
           </footer>
