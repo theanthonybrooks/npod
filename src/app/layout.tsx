@@ -1,8 +1,9 @@
-import Test from "@/app/page";
+import { AppleDeviceProvider } from "@/contexts/apple-device-context";
+import { isAppleUA } from "@/utils/appleFns";
 import { cn } from "@/utils/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,14 +26,18 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const isAppleDevice = cookieStore.get("isAppleDevice")?.value === "true";
+  const ua = (await headers()).get("user-agent") ?? "";
+  const isAppleDevice = isAppleUA(ua);
+  console.log(ua);
+
   return (
     <html lang="en">
       <body
         className={cn(geistSans.variable, geistMono.variable, "antialiased")}
       >
-        <Test isAppleDevice={isAppleDevice} />
+        <AppleDeviceProvider isAppleDevice={isAppleDevice}>
+          {children}
+        </AppleDeviceProvider>
       </body>
     </html>
   );

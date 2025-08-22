@@ -15,9 +15,9 @@ export async function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next();
-  response.cookies.set("isAppleDevice", isAppleDevice ? "true" : "false", {
-    path: "/",
-  });
+  //   response.cookies.set("isAppleDevice", isAppleDevice ? "true" : "false", {
+  //     path: "/",
+  //   });
   return response;
 }
 

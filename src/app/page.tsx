@@ -1,6 +1,7 @@
 "use client";
 
 import { Navbar } from "@/app/ui/components/navbar";
+import { useAppleDevice } from "@/contexts/apple-device-context";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 
@@ -10,11 +11,8 @@ import { useRef } from "react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-interface TestProps {
-  isAppleDevice?: boolean;
-}
-
-export default function Test({ isAppleDevice }: TestProps) {
+export default function Test() {
+  const isAppleDevice = useAppleDevice();
   console.log(isAppleDevice);
 
   // const startRef = useRef<HTMLDivElement | null>(null);
