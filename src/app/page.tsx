@@ -97,7 +97,7 @@ export default function Test() {
           <header
             // className="panel flex h-screen w-full flex-col items-start bg-[url('/images/1.jpg')] bg-[length:auto_100vh] bg-top bg-no-repeat pt-40 font-black text-white/90 uppercase"
             className={cn(
-              "panel relative w-full bg-[url('/images/1.jpg')] pt-20 sm:pt-40",
+              "panel relative w-full bg-[url('/images/1.jpg')] pt-30 sm:pt-40",
               panelClass,
             )}
           >
@@ -126,7 +126,7 @@ export default function Test() {
                 }
               }}
               className={cn(
-                "absolute bottom-0 left-1/2 -translate-x-1/2 transition-opacity",
+                "absolute bottom-0 left-1/2 -translate-x-1/2 transition-opacity sm:bottom-4",
                 hiddenScrollDown && "opacity-0",
               )}
             >
@@ -142,7 +142,7 @@ export default function Test() {
             )}
           >
             <div className="flex flex-col items-start gap-12 sm:col-start-2 sm:pr-10">
-              <h2 className="text-left text-4xl font-bold sm:text-5xl sm:leading-[1.1]">
+              <h2 className="text-left text-[1.7rem] font-bold sm:text-5xl sm:leading-[1.1]">
                 An exhibition on the fragile infrastructures of nourishment; how
                 water, labor, and land sustain the abundance of Europe&apos;s
                 food system.
