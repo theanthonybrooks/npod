@@ -8,14 +8,14 @@ import { gsap } from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Test() {
   const isAppleDevice = useAppleDevice();
   console.log(isAppleDevice);
-
+  const [bgFixed, setBgFixed] = useState(false);
   // const startRef = useRef<HTMLDivElement | null>(null);
   const bgRef = useRef<HTMLDivElement | null>(null);
 
@@ -65,12 +65,14 @@ export default function Test() {
       end: "bottom bottom",
       onEnter: () => {
         // console.log("onEnter");
-        madeByRef.current?.classList.add("bg-fixed");
+        // madeByRef.current?.classList.add("bg-fixed");
+        setBgFixed(true);
       },
 
       onEnterBack: () => {
         // console.log("onEnterBack");
-        madeByRef.current?.classList.remove("bg-fixed");
+        // madeByRef.current?.classList.remove("bg-fixed");
+        setBgFixed(false);
       },
       markers: true,
     });
@@ -157,7 +159,11 @@ export default function Test() {
           </section>
           <section
             id="madeby"
-            className={cn("bg-[url('/images/5.jpg')]", panelClass)}
+            className={cn(
+              "bg-[url('/images/5.jpg')]",
+              panelClass,
+              bgFixed && "bg-fixed",
+            )}
             ref={madeByRef}
           >
             <div className="wrap center">
