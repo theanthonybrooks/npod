@@ -28,7 +28,6 @@ export default async function RootLayout({
 }>) {
   const ua = (await headers()).get("user-agent") ?? "";
   const isAppleDevice = isAppleUA(ua);
-  console.log(ua);
 
   return (
     <html lang="en">
@@ -36,7 +35,7 @@ export default async function RootLayout({
         className={cn(
           geistSans.variable,
           geistMono.variable,
-          "bg-[#2b51ba] antialiased",
+          "bg-[##cc903a] antialiased",
         )}
       >
         <AppleDeviceProvider isAppleDevice={isAppleDevice}>
