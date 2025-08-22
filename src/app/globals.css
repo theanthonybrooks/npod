@@ -12,16 +12,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-body {
-  background-color: black;
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  & section {
-    color: black;
-  }
-}
-
 /* .bg-container {
   position: absolute;
   top: 0;
@@ -46,7 +36,7 @@ body {
 } */
 
 body {
-  background-color: white;
+  /* background-color: white; */
   margin: 0;
   background-image: url(/images/5.jpg);
   /* opacity: 50%; */
@@ -55,6 +45,9 @@ body {
   background-attachment: fixed;
   background-position: top center;
 
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
   @media (width <= 768px) {
     background-size: auto 100vh;
   }
