@@ -84,6 +84,7 @@ export default function Test() {
     <>
       <div className="wrap-all">
         <Navbar />
+
         <div
           className={cn(
             "bg transition-opacity",
@@ -102,7 +103,7 @@ export default function Test() {
           >
             <div
               className={cn(
-                "mx-auto flex w-full max-w-[90vw] flex-col items-start font-black text-white/90 uppercase sm:max-w-[85vw]",
+                "mx-auto flex h-full w-full max-w-[90vw] flex-col items-start justify-center font-black text-white/90 uppercase sm:max-w-[85vw] sm:justify-start sm:pt-10",
               )}
               style={{
                 fontSize: "clamp(2rem, 11vw, 14rem)",
@@ -125,7 +126,7 @@ export default function Test() {
                 }
               }}
               className={cn(
-                "absolute bottom-2 left-1/2 -translate-x-1/2 transition-opacity",
+                "absolute bottom-0 left-1/2 -translate-x-1/2 transition-opacity",
                 hiddenScrollDown && "opacity-0",
               )}
             >
@@ -136,11 +137,11 @@ export default function Test() {
           <section
             id="intro"
             className={cn(
-              "grid grid-cols-2 items-center bg-[url('/images/2.jpg')]",
+              "grid items-center justify-center bg-[url('/images/2.jpg')] px-10 sm:grid-cols-2",
               panelClass,
             )}
           >
-            <div className="col-start-2 flex flex-col items-start gap-12 pr-10">
+            <div className="flex flex-col items-start gap-12 sm:col-start-2 sm:pr-10">
               <h2 className="text-left text-4xl font-bold">
                 An exhibition on the fragile infrastructures of nourishment; how
                 water, labor, and land sustain the abundance of Europe&apos;s
