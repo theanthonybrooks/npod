@@ -78,7 +78,7 @@ export default function Test() {
     };
   });
 
-  const panelClass = "h-screen  bg-no-repeat bg-top  bg-[length:auto_100vh]";
+  const panelClass = "h-[100dvh]  bg-no-repeat bg-top  bg-[length:auto_100dvh]";
 
   return (
     <>
@@ -136,24 +136,29 @@ export default function Test() {
 
           <section
             id="intro"
-            className={cn(
-              "grid items-center justify-center bg-[url('/images/2.jpg')] px-10 sm:grid-cols-2 sm:items-end",
-              panelClass,
-            )}
+            className={cn("bg-[url('/images/2.jpg')]", panelClass)}
           >
-            <div className="flex flex-col items-start gap-12 sm:col-start-2 sm:pr-10">
-              <h2 className="text-left text-[1.7rem] font-bold sm:text-5xl sm:leading-[1.1]">
-                An exhibition on the fragile infrastructures of nourishment; how
-                water, labor, and land sustain the abundance of Europe&apos;s
-                food system.
-              </h2>
-              {/* TODO: add address link to google maps */}
-              <span className="text-foreground flex w-full flex-col items-start rounded-4xl bg-white/90 px-6 py-4 sm:w-[350px]">
-                <p className="!font-ubuntu text-xl font-bold">Hase Studio</p>
-                <p className="!font-ubuntu text-[1.2rem] italic">
-                  Weisestrasse 22, 12049, Berlin
+            <div
+              className={cn(
+                "m-auto grid h-full max-w-[85vw] items-center justify-center sm:grid-cols-2",
+              )}
+            >
+              <div className="flex flex-col items-start gap-12 sm:col-start-2">
+                <p className="font-barlow text-left text-[1.7rem] font-bold sm:text-5xl sm:leading-[1.1]">
+                  An exhibition on the fragile infrastructures of nourishment;
+                  how water, labor, and land sustain the abundance of
+                  Europe&apos;s food system.
                 </p>
-              </span>
+                {/* TODO: add address link to google maps */}
+                <span className="text-foreground flex w-full flex-col items-start rounded-4xl bg-white/90 px-6 py-4 sm:w-[350px]">
+                  <p className="!font-ubuntu text-xl font-medium">
+                    Hase Studio
+                  </p>
+                  <p className="!font-ubuntu text-[1.2rem] italic">
+                    Weisestrasse 22, 12049, Berlin
+                  </p>
+                </span>
+              </div>
             </div>
           </section>
 
@@ -161,9 +166,28 @@ export default function Test() {
             id="hours"
             className={cn("bg-[url('/images/3.jpg')]", panelClass)}
           >
-            <div className="wrap center">
-              <h2 className="lines">Section Three</h2>
-              <h2 className="lines">a SMILE</h2>
+            <div
+              className={cn(
+                "m-auto grid h-full max-w-[85vw] items-center justify-center sm:grid-cols-2",
+              )}
+            >
+              <div className="flex flex-col items-start gap-8 sm:col-start-1">
+                <h2 className="font-ubuntu text-left text-[1.7rem] font-medium sm:text-6xl sm:leading-[1.1]">
+                  Open Hours
+                </h2>
+
+                <span className="flex w-full flex-col items-start gap-2">
+                  <p className="text-3xl font-medium">
+                    Opening on September 5<sup>th</sup> at 7 pm
+                  </p>
+                  <p className="text-3xl font-medium">
+                    Wednesday - Friday: 4 pm - 7 pm
+                  </p>
+                  <p className="text-3xl font-medium">
+                    Saturday - Sunday: 12 pm - 7 pm
+                  </p>
+                </span>
+              </div>
             </div>
           </section>
 

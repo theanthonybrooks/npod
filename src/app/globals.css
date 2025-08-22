@@ -50,7 +50,12 @@ h1 {
   font-family: "alfarn", sans-serif;
   text-transform: uppercase;
 }
-h2,
+
+h2 {
+  font-family: "ubuntu", sans-serif;
+}
+
+h3,
 p {
   font-family: "barlow", sans-serif;
 }
