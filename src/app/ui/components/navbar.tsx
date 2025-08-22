@@ -78,7 +78,7 @@ export const Navbar = ({ className, page }: NavbarProps) => {
       <div className="flex items-center gap-x-10">
         <>
           <Link href="/#hours">Open Hours</Link>
-          {!programPage && <Link href="/program">Program</Link>}
+          {!programPage && <Link href="#program">Program</Link>}
           <Link href="/#about" className="hidden sm:block">
             About
           </Link>

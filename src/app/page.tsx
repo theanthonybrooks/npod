@@ -11,7 +11,6 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { VscChevronDown } from "react-icons/vsc";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -120,7 +119,7 @@ export default function Test() {
                 September 5<sup>th</sup> - 14<sup>th</sup>
               </span>
             </div>
-            <button
+            {/* <button
               aria-label="Scroll to intro section"
               onClick={() => {
                 const intro = document.getElementById("intro");
@@ -134,7 +133,7 @@ export default function Test() {
               )}
             >
               <VscChevronDown className="size-15 animate-bounce cursor-pointer text-white/90 hover:scale-110 active:scale-95" />
-            </button>
+            </button> */}
           </header>
 
           <section
@@ -162,16 +161,14 @@ export default function Test() {
                   </p>
                 </span>
               </div>
+              <div id="hours" />
             </div>
           </section>
 
-          <section
-            id="hours"
-            className={cn("bg-[url('/images/3.jpg')]", panelClass)}
-          >
+          <section className={cn("bg-[url('/images/3.jpg')]", panelClass)}>
             <div
               className={cn(
-                "m-auto grid h-full max-w-[85vw] grid-rows-2 content-between items-start justify-center lg:grid-cols-2",
+                "m-auto flex h-full max-w-[85vw] grid-rows-2 flex-col content-between items-start justify-between lg:grid lg:grid-cols-2 lg:justify-center",
               )}
             >
               <div className="flex flex-col items-start gap-4 sm:col-start-1 sm:gap-8">
@@ -187,14 +184,15 @@ export default function Test() {
                   <p>Saturday - Sunday: 12 pm - 7 pm</p>
                 </span>
               </div>
+              <div id="program" />
               <div className="col-start-2 row-start-2 flex flex-col gap-8 sm:items-center">
                 {/* TODO: Add appropriate event depending on the current date and what has passed. */}
                 <h2 className="font-ubuntu text-center text-4xl font-medium text-white/90 sm:text-6xl sm:leading-[1.1]">
                   Program
                 </h2>
 
-                <div className="text-foreground flex w-full flex-col items-start gap-6">
-                  <div className="flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 sm:px-14">
+                <div className="item-center flex w-full flex-col gap-6">
+                  <div className="text-foreground flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 sm:px-14">
                     <p className="font-barlow text-left text-2xl font-semibold">
                       Reading Landscapes from Above: Maps, Satellites, and
                       Visualizations
@@ -210,10 +208,10 @@ export default function Test() {
                       also questioning the limits of Western gaze on geography.
                     </p>
                   </div>
+                  <Link href="/program" className="text-xl font-medium">
+                    View full program
+                  </Link>
                 </div>
-                <Link href="/program" className="text-lg font-medium">
-                  View full program
-                </Link>
               </div>
             </div>
           </section>
