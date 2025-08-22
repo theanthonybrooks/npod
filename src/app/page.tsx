@@ -192,15 +192,15 @@ export default function Test() {
                 </h2>
 
                 <div className="item-center flex w-full flex-col gap-6">
-                  <div className="text-foreground flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 sm:px-14">
+                  <div className="text-foreground flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 pb-8 sm:px-14">
                     <p className="font-barlow text-left text-2xl font-semibold">
                       Reading Landscapes from Above: Maps, Satellites, and
                       Visualizations
                     </p>
-                    <p className="font-medium italic">
+                    <p className="text-lg font-medium italic">
                       September 6th, 4 - 6 pm
                     </p>
-                    <p className="text-start font-medium">
+                    <p className="mt-3 text-start text-lg font-medium">
                       A guided exploration on how landscapes are represented
                       through data and satellite images. Taking examples from
                       Sentinel visualizations of Almería, we&apos;ll explore how
