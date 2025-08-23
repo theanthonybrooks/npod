@@ -52,8 +52,8 @@ export const artistInfo: Artist[] = [
       <>
         <p>Martin Karl Kufeita is a Berlin-based artist.</p>
         <p>
-          Martin Karl Kufieta's artistic practice combines both individual and
-          collective approaches. His interdisciplinary work explores various
+          Martin Karl Kufieta&apos;s artistic practice combines both individual
+          and collective approaches. His interdisciplinary work explores various
           themes, with his Polish heritage playing a continuous and central
           role. By incorporating objects from the past and locally sourced
           materials, he creates emotional connections and shares personal
@@ -70,8 +70,8 @@ export const artistInfo: Artist[] = [
       <>
         <p>Martin Karl Kufeita is a Berlin-based artist.</p>
         <p>
-          Martin Karl Kufieta's artistic practice combines both individual and
-          collective approaches. His interdisciplinary work explores various
+          Martin Karl Kufieta&apos;s artistic practice combines both individual
+          and collective approaches. His interdisciplinary work explores various
           themes, with his Polish heritage playing a continuous and central
           role.
         </p>
@@ -104,11 +104,10 @@ export const artistInfo: Artist[] = [
     mobileDesc: (
       <>
         <p>
-          {" "}
           Zeren Oruc is an independent curator, researcher, and dialogical
           artist dedicated to exploring and addressing modern issues of ecology,
           society, and sustainability through decolonial narratives and
-          anti-capitalist theories.{" "}
+          anti-capitalist theories.
         </p>
       </>
     ),

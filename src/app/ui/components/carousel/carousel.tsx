@@ -30,14 +30,14 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
   return (
     <div className="embla">
       <div
-        className="embla__viewport flex justify-center px-10 sm:px-15 xl:px-0"
+        className="embla__viewport flex justify-center px-10 sm:px-15 2xl:px-0"
         ref={emblaRef}
       >
         <div className="embla__container max-w-[90vw]">
           {slides.map((slide, i) => {
             return (
               <div
-                className="embla__slide flex-[0_0_100%] xl:flex-[0_0_33.333%]"
+                className="embla__slide flex-[0_0_100%] 2xl:flex-[0_0_33.333%]"
                 key={i}
               >
                 <AboutCard
