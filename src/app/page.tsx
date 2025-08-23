@@ -8,6 +8,10 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { useMotionValueEvent, useScroll } from "motion/react";
 
+import { Footer } from "@/app/ui/components/footer";
+import { ProgramCard } from "@/app/ui/components/program-card";
+import { programData } from "@/data/program-dates";
+import { isBefore } from "date-fns";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -79,8 +83,14 @@ export default function Test() {
 
   const panelClass = "h-[100vh]  bg-no-repeat bg-top  bg-[length:auto_100vh]";
 
-  const today = new Date();
-  console.log(today.toISOString());
+  const now = new Date();
+
+  const sortedEvents = [...programData].sort(
+    (a, b) => a.start.getTime() - b.start.getTime(),
+  );
+
+  const nextEvent =
+    sortedEvents.find((item) => !isBefore(item.end, now)) || sortedEvents[0];
 
   return (
     <>
@@ -205,22 +215,19 @@ export default function Test() {
                 </h2>
 
                 <div className="item-center flex w-full flex-col gap-6">
-                  <div className="text-foreground flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 pb-8 sm:px-14">
-                    <p className="font-barlow text-left text-2xl font-semibold">
-                      Reading Landscapes from Above: Maps, Satellites, and
-                      Visualizations
-                    </p>
-                    <p className="text-lg font-medium italic">
-                      September 6th, 4 - 6 pm
-                    </p>
-                    <p className="mt-3 text-start text-lg font-medium">
-                      A guided exploration on how landscapes are represented
-                      through data and satellite images. Taking examples from
-                      Sentinel visualizations of Almería, we&apos;ll explore how
-                      mapping reveals ecological stress and human impact, while
-                      also questioning the limits of Western gaze on geography.
-                    </p>
-                  </div>
+                  {nextEvent &&
+                    (() => {
+                      return (
+                        <ProgramCard
+                          title={nextEvent.title}
+                          start={nextEvent.start}
+                          end={nextEvent.end}
+                          description={nextEvent.description}
+                          shouldDisplayTime
+                        />
+                      );
+                    })()}
+
                   <Link href="/program" className="text-xl font-medium">
                     View full program
                   </Link>
@@ -249,7 +256,7 @@ export default function Test() {
             )}
             ref={madeByRef}
           >
-            <div className="wrap center">
+            <div className=" ">
               <h2 className="lines">Section Five</h2>
               <h2 className="lines">a SMILE</h2>
             </div>
@@ -258,28 +265,7 @@ export default function Test() {
           <section id="holdstart posters" className="panel">
             <p className="last"></p>
           </section>
-          <footer className="flex w-full flex-col items-center gap-4 p-4">
-            <div className="text-foreground mx-auto flex w-full items-center justify-around rounded-full bg-white/90 p-4 text-sm sm:max-w-lg">
-              <p>
-                Made by{" "}
-                <Link href="https://theanthonybrooks.com">Anthony Brooks</Link>
-              </p>
-              <p>
-                Designed by{" "}
-                <Link href="https://design.zerenoruc.com">Zeren Oruc</Link>
-              </p>
-            </div>
-            <div className="flex items-center gap-8 text-white/90">
-              <p>
-                <Link href="https://zerenoruc.com/impressum">Impressum</Link>
-              </p>
-              <p>
-                <Link href="https://zerenoruc.com/datenschutz">
-                  Datenschutz
-                </Link>
-              </p>
-            </div>
-          </footer>
+          <Footer />
         </main>
         <BackToTop />
       </div>

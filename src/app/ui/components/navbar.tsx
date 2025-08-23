@@ -35,7 +35,7 @@ const navbarVariants: Variants = {
 export const Navbar = ({ className, page }: NavbarProps) => {
   const isMobile = useIsMobile();
   const programPage = page === "program";
-  const homePage = page === "home";
+  //   const homePage = page === "home";
   const { scrollY } = useScroll();
   const [navTrigger, setNavTrigger] = useState(false);
 
