@@ -3,7 +3,7 @@ import Link from "next/link";
 export const Footer = () => {
   return (
     <footer className="mx-auto flex w-full max-w-[85vw] flex-col items-center gap-4 py-4">
-      <div className="text-foreground mx-auto flex w-full items-center justify-around rounded-full bg-white/90 p-4 text-sm">
+      <div className="text-foreground mx-auto flex w-full flex-col-reverse items-center justify-around gap-1 rounded-full bg-white/90 p-4 text-sm sm:flex-row">
         <p>
           Made by{" "}
           <Link href="https://theanthonybrooks.com">Anthony Brooks</Link>

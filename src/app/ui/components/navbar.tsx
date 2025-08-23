@@ -11,7 +11,7 @@ import { useState } from "react";
 
 interface NavbarProps {
   className?: string;
-  page?: "home" | "program";
+  page: "home" | "program";
 }
 const navbarVariants: Variants = {
   initial: {
@@ -32,10 +32,18 @@ const navbarVariants: Variants = {
   },
 };
 
+const navBarLinks = [
+  { href: "/", text: "Home", mobile: true, page: "program" },
+  { href: "/#hours", text: "Open Hours", mobile: true, page: "all" },
+  { href: "/#program", text: "Program", mobile: true, page: "home" },
+  { href: "/#about", text: "About", mobile: false, page: "all" },
+  { href: "/#support", text: "Prints", mobile: false, page: "all" },
+];
+
 export const Navbar = ({ className, page }: NavbarProps) => {
   const isMobile = useIsMobile();
   const programPage = page === "program";
-  //   const homePage = page === "home";
+  const homePage = page === "home";
   const { scrollY } = useScroll();
   const [navTrigger, setNavTrigger] = useState(false);
 
@@ -75,18 +83,22 @@ export const Navbar = ({ className, page }: NavbarProps) => {
           September 5<sup>th</sup> - 14<sup>th</sup>
         </span>
       </div>
+
       <div className="flex items-center gap-x-10">
-        <>
-          <Link href="/#hours">Open Hours</Link>
-          {!programPage && <Link href="#program">Program</Link>}
-          <Link href="/#about" className="hidden sm:block">
-            About
-          </Link>
-          <Link href="/#support" className="hidden sm:block">
-            Prints
-          </Link>
-        </>
-        {programPage && <Link href="/">Home</Link>}
+        {navBarLinks
+          .filter((link) => link.page === "all" || link.page === page)
+          .map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "decoration-2 hover:underline hover:underline-offset-4 active:underline-offset-2",
+                !link.mobile && "hidden sm:block",
+              )}
+            >
+              {link.text}
+            </Link>
+          ))}
       </div>
     </motion.div>
   );

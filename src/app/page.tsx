@@ -3,13 +3,14 @@
 import { BackToTop } from "@/app/ui/components/back-to-top";
 import { Navbar } from "@/app/ui/components/navbar";
 import { useAppleDevice } from "@/contexts/apple-device-context";
-import { cn, useIsMobile } from "@/utils/utils";
+import { cn } from "@/utils/utils";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import { useMotionValueEvent, useScroll } from "motion/react";
 
+import { AboutCard } from "@/app/ui/components/about-card";
 import { Footer } from "@/app/ui/components/footer";
 import { ProgramCard } from "@/app/ui/components/program-card";
+import { artistInfo } from "@/data/artist-info";
 import { programData } from "@/data/program-dates";
 import { isBefore } from "date-fns";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,26 +19,16 @@ import { useRef, useState } from "react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function Test() {
+export default function Home() {
   const { isAppleDevice } = useAppleDevice();
-  const isMobile = useIsMobile();
 
   const [bgFade, setBgFade] = useState(false);
   const [madeFixed, setMadeFixed] = useState(false);
-  const [hiddenScrollDown, setHiddenScrollDown] = useState(false);
 
   const bgRef = useRef<HTMLDivElement | null>(null);
   const madeByRef = useRef<HTMLDivElement | null>(null);
 
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest >= 100) {
-      setHiddenScrollDown(true);
-    } else {
-      setHiddenScrollDown(false);
-    }
-  });
+  // const { scrollY } = useScroll();
 
   useGSAP(() => {
     const bg = bgRef.current;
@@ -241,9 +232,26 @@ export default function Test() {
           >
             <div
               className={cn(
-                "m-auto flex h-full max-w-[85vw] items-center justify-center",
+                "m-auto flex h-full max-w-[85vw] flex-col items-center justify-center gap-12",
               )}
-            ></div>
+            >
+              <h2 className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]">
+                This exhibition is made by
+              </h2>
+              <div
+                className={cn(
+                  "flex flex-col justify-between gap-8 md:flex-row",
+                )}
+              >
+                {artistInfo.map((artist) => (
+                  <AboutCard
+                    key={artist.name}
+                    name={artist.name}
+                    description={artist.description}
+                  />
+                ))}
+              </div>
+            </div>
           </section>
 
           <section
