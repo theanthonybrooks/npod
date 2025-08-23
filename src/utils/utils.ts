@@ -29,7 +29,7 @@ export function capitalize(str: string) {
 }
 
 const MOBILE_BREAKPOINT = 768;
-const DESKTOP_BREAKPOINT = 1400;
+const DESKTOP_BREAKPOINT = 1536;
 
 export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(

@@ -5,8 +5,8 @@ import { cn } from "@/utils/utils";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import React from "react";
-import { NextButton, PrevButton, usePrevNextButtons } from "./carousel-buttons";
-import { DotButton, useDotButton } from "./carousel-dot-btn";
+import { usePrevNextButtons } from "./carousel-buttons";
+import { useDotButton } from "./carousel-dot-btn";
 
 type PropType = {
   slides: Artist[];
@@ -19,6 +19,8 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
+
+  console.log(selectedIndex, scrollSnaps);
 
   const {
     prevBtnDisabled,
@@ -59,23 +61,36 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
         </div>
       </div>
 
-      <div className="embla__controls sr-only">
-        <div className="embla__buttons">
+      <div className="embla__controls sr-only mx-auto mt-6 flex w-full justify-center gap-3 lg:not-sr-only 2xl:sr-only">
+        {/* <div className="embla__buttons sr-only">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </div>
+        </div> */}
 
-        <div className="embla__dots sr-only">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={cn(
-                "embla__dot bg-white text-white",
-                index === selectedIndex ? "embla__dot--selected" : "",
-              )}
-            />
-          ))}
+        <div className="embla__dots mt-6 flex items-center gap-3 2xl:sr-only">
+          {scrollSnaps.map((_, index) => {
+            const activeIndex = selectedIndex === index;
+            return (
+              // <DotButton
+              //   key={index}
+              //   onClick={() => onDotButtonClick(index)}
+              //   className={cn(
+              //     "embla__dot bg-white text-white",
+              //     index === selectedIndex ? "embla__dot--selected" : "",
+              //   )}
+              // />
+              <div
+                className={cn(
+                  "size-4 cursor-pointer rounded-full hover:scale-110 active:scale-95",
+                  activeIndex
+                    ? "scale-110 cursor-default bg-white/90"
+                    : "border-3 border-white/90",
+                )}
+                key={index}
+                onClick={() => onDotButtonClick(index)}
+              ></div>
+            );
+          })}
         </div>
       </div>
     </div>
