@@ -6,6 +6,7 @@ export interface AppleDeviceContextValue {
   isAppleDevice: boolean;
   isIOS: boolean;
   isMacSafari: boolean;
+  uaVal: string;
 }
 
 export const AppleDeviceContext = createContext<
@@ -16,15 +17,19 @@ export function AppleDeviceProvider({
   isAppleDevice,
   isIOS,
   isMacSafari,
+  uaVal,
   children,
 }: {
   isAppleDevice: boolean;
   isIOS: boolean;
   isMacSafari: boolean;
+  uaVal: string;
   children: ReactNode;
 }) {
   return (
-    <AppleDeviceContext.Provider value={{ isAppleDevice, isIOS, isMacSafari }}>
+    <AppleDeviceContext.Provider
+      value={{ isAppleDevice, isIOS, isMacSafari, uaVal }}
+    >
       {children}
     </AppleDeviceContext.Provider>
   );

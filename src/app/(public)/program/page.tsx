@@ -15,8 +15,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Program() {
-  const { isIOS } = useAppleDevice();
-  console.log(isIOS);
+  const { isIOS, uaVal, isAppleDevice } = useAppleDevice();
+  console.log(isIOS, uaVal, isAppleDevice);
   const panelClass =
     "h-full  bg-no-repeat bg-top bg-[length:auto] sm:bg-[length:100vw_auto] ";
   const appleClass = !isIOS && "bg-fixed";
@@ -25,13 +25,14 @@ export default function Program() {
   );
   return (
     <>
-      <div
-        className={cn(
-          "bg-[url('/images/backg_large_longer.jpg')] sm:bg-[url('/images/mini_bg.jpg')]",
-          panelClass,
-          appleClass,
-        )}
-      >
+      <div className={cn("relative", panelClass, appleClass)}>
+        <div
+          className={cn(
+            "fixed -z-10 h-screen w-screen bg-[url('/images/mini_bg.jpg')]",
+            panelClass,
+          )}
+        />
+
         <Navbar page="program" />
 
         <div id="program" className={cn("py-10")}>

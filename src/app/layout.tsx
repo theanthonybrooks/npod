@@ -53,6 +53,7 @@ export default async function RootLayout({
           isAppleDevice={isAppleDevice}
           isIOS={isIOS}
           isMacSafari={isMacSafari}
+          uaVal={ua}
         >
           {children}
         </AppleDeviceProvider>
