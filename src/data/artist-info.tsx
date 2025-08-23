@@ -12,10 +12,7 @@ export const artistInfo: Artist[] = [
     name: "Isabel Law",
     description: (
       <>
-        <p>
-          Isabel Law (b. 1997, Hong Kong) is an artist & researcher based in
-          London.
-        </p>
+        <p>Isabel Law is an artist & researcher based in London.</p>
 
         <p>
           Her work focuses on examining our psychological relationship with(in)
@@ -24,12 +21,12 @@ export const artistInfo: Artist[] = [
         </p>
 
         <p>
-          From this, her practice broadly explores our wide ecological networks.
-          She often alternates between a mix of found, organic or digital media,
-          questioning how we conceptualise and capture the complexity, depth and
-          impermanence of our natural world. Through her installations, objects
-          and experiences, she hopes to elicit empathy and curiosity in the
-          Other – from our human, to more-than-human neighbours.
+          Her practice broadly explores our wide ecological networks. She often
+          alternates between a mix of found, organic or digital media,
+          questioning how we conceptualise and capture the complexity and
+          impermanence of our world. Through her installations, objects and
+          experiences, she hopes to elicit empathy and curiosity in the Other -
+          from our human, to more-than-human neighbours.
         </p>
       </>
     ),
@@ -53,24 +50,30 @@ export const artistInfo: Artist[] = [
     name: "Martin Karl Kufeita",
     description: (
       <>
-        <p>Martin Martin, who are you?</p>
+        <p>Martin Karl Kufeita is a Berlin-based artist.</p>
         <p>
-          Martin Kufeita’s practice blends material experimentation with
-          gestures of hospitality. Working across woodworking, video, and
-          participatory forms, he creates tools, settings, and encounters that
-          invite collective experience.
+          Martin Karl Kufieta's artistic practice combines both individual and
+          collective approaches. His interdisciplinary work explores various
+          themes, with his Polish heritage playing a continuous and central
+          role. By incorporating objects from the past and locally sourced
+          materials, he creates emotional connections and shares personal
+          stories.
         </p>
-        <p>zvdvd</p>,
+        <p>
+          A core aspect of his work is the desire to bring people together.
+          Through participatory objects such as seating arrangements, tableware,
+          and temporary gathering spaces,he encourages interaction and dialogue.
+        </p>
       </>
     ),
     mobileDesc: (
       <>
-        <p>Martin Martin, who are you?</p>
+        <p>Martin Karl Kufeita is a Berlin-based artist.</p>
         <p>
-          Martin Kufeita’s practice blends material experimentation with
-          gestures of hospitality. Working across woodworking, video, and
-          participatory forms, he creates tools, settings, and encounters that
-          invite collective experience.
+          Martin Karl Kufieta's artistic practice combines both individual and
+          collective approaches. His interdisciplinary work explores various
+          themes, with his Polish heritage playing a continuous and central
+          role.
         </p>
       </>
     ),
@@ -81,11 +84,10 @@ export const artistInfo: Artist[] = [
     description: (
       <>
         <p>
-          {" "}
           Zeren Oruc is an independent curator, researcher, and dialogical
           artist dedicated to exploring and addressing modern issues of ecology,
           society, and sustainability through decolonial narratives and
-          anti-capitalist theories.{" "}
+          anti-capitalist theories.
         </p>
         <p>
           Her practice revolves around decentralized and non-hierarchical

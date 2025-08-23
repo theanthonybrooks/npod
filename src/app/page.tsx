@@ -248,14 +248,6 @@ export default function Home() {
                 Collaborators
               </h2>
               <div className={cn("w-full")}>
-                {/* {artistInfo.map((artist) => (
-                  <AboutCard
-                    key={artist.name}
-                    name={artist.name}
-                    description={artist.description}
-                  />
-                ))} */}
-                {/* <Carousel data={artistInfo} /> */}
                 <EmblaCarousel slides={artistInfo} options={OPTIONS} />
               </div>
             </div>
