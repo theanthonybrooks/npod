@@ -3,7 +3,7 @@
 import { BackToTop } from "@/app/ui/components/back-to-top";
 import { Navbar } from "@/app/ui/components/navbar";
 import { useAppleDevice } from "@/contexts/apple-device-context";
-import { cn, useIsDesktop } from "@/utils/utils";
+import { cn, sanitizeInput, useIsDesktop } from "@/utils/utils";
 import { useGSAP } from "@gsap/react";
 import { EmblaOptionsType } from "embla-carousel";
 import { gsap } from "gsap";
@@ -20,6 +20,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 
+const isValidEmail = (email: string) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Home() {
@@ -31,6 +33,12 @@ export default function Home() {
 
   const bgRef = useRef<HTMLDivElement | null>(null);
   const madeByRef = useRef<HTMLDivElement | null>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const isValidForm = Boolean(isValidEmail(email) && message);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState("");
 
   // const { scrollY } = useScroll();
 
@@ -264,7 +272,9 @@ export default function Home() {
 
           <div
             id="support"
-            className={cn("flex h-screen w-full max-w-[85dvw] items-end")}
+            className={cn(
+              "flex h-[160vh] w-full max-w-[85dvw] items-end sm:h-screen",
+            )}
           >
             <div className="sdh flex w-full max-w-[clamp(390px,60vw,1000em)] flex-col gap-8 py-10 text-start">
               <span className="flex w-full flex-col items-start gap-y-2">
@@ -313,7 +323,7 @@ export default function Home() {
               "text-foreground mx-auto flex h-full w-full max-w-[85dvw] flex-col items-center justify-start py-10",
             )}
           >
-            <div className="grid w-full grid-cols-[max-content_auto] rounded-4xl bg-white/90 p-6 pb-8 sm:px-14 sm:pt-12 sm:pb-16">
+            <div className="flex w-full flex-col gap-y-6 rounded-4xl bg-white/90 p-6 pb-8 sm:px-14 sm:pt-12 sm:pb-16 lg:grid lg:grid-cols-[max-content_auto]">
               <div className={cn("flex items-center gap-10")}>
                 <div className={cn("flex flex-col gap-3")}>
                   <Image
@@ -356,16 +366,28 @@ export default function Home() {
                 </p>
                 <Input
                   className={cn(
-                    "text-foreground h-12 w-full max-w-[70%] bg-white text-base",
+                    "text-foreground h-12 w-full bg-white px-4 text-base sm:max-w-[70%]",
                   )}
-                  placeholder="heh"
+                  placeholder="Your contact"
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
                 />
                 <Input
                   className={cn(
-                    "text-foreground h-12 w-full max-w-[70%] bg-white text-base",
+                    "text-foreground h-12 w-full bg-white px-4 text-base sm:max-w-[70%]",
                   )}
-                  placeholder="huh"
+                  onChange={(e) => setMessage(sanitizeInput(e.target.value))}
+                  placeholder="Your message"
                 />
+                {isValidForm && (
+                  <button
+                    className={cn(
+                      "border-foreground font-ubuntu w-full rounded-lg border-2 bg-white px-6 py-4 font-medium",
+                    )}
+                  >
+                    Send Message
+                  </button>
+                )}
               </div>
             </div>
           </div>

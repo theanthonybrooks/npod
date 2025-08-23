@@ -66,3 +66,9 @@ export function useIsDesktop() {
 
   return !!isDesktop;
 }
+
+export const sanitizeInput = (value: string) => {
+  const div = document.createElement("div");
+  div.textContent = value;
+  return div.innerHTML;
+};
