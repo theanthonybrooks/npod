@@ -10,11 +10,13 @@ import { gsap } from "gsap";
 
 import { EmblaCarousel } from "@/app/ui/components/carousel/carousel";
 import { Footer } from "@/app/ui/components/footer";
+import { Input } from "@/app/ui/components/input";
 import { ProgramCard } from "@/app/ui/components/program-card";
 import { artistInfo } from "@/data/artist-info";
 import { programData } from "@/data/program-dates";
 import { isBefore } from "date-fns";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 
@@ -100,7 +102,7 @@ export default function Home() {
         <div
           className={cn(
             "bg transition-opacity",
-            "bg-[url('/images/5.jpg')]",
+            "bg-[url('/images/4.jpg')]",
             // bgFade ? "opacity-0" : "opacity-100",
           )}
           ref={bgRef}
@@ -236,8 +238,15 @@ export default function Home() {
             </div>
           </section>
           <section
-            id="about"
-            className={cn("bg-[url('/images/4.jpg')]", panelClass)}
+            id="collaborators"
+            // className={cn("bg-[url('/images/4.jpg')]", panelClass)}
+            className={cn(
+              !isAppleDevice && "bg-[url('/images/4.jpg')]",
+              isAppleDevice && !bgFade && "bg-[url('/images/4.jpg')]",
+              panelClass,
+              madeFixed && "bg-fixed",
+            )}
+            ref={madeByRef}
           >
             <div
               className={cn(
@@ -253,25 +262,113 @@ export default function Home() {
             </div>
           </section>
 
-          <section
+          <div
             id="support"
-            className={cn(
-              !isAppleDevice && "bg-[url('/images/5.jpg')]",
-              isAppleDevice && !bgFade && "bg-[url('/images/5.jpg')]",
-              panelClass,
-              madeFixed && "bg-fixed",
-            )}
-            ref={madeByRef}
+            className={cn("flex h-screen w-full max-w-[85dvw] items-end")}
           >
-            <div className="flex h-full items-center justify-center">
-              <h2 className="lines">Section Five</h2>
-              <h2 className="lines">a SMILE</h2>
+            <div className="sdh flex w-full max-w-[clamp(390px,60vw,1000em)] flex-col gap-8 py-10 text-start">
+              <span className="flex w-full flex-col items-start gap-y-2">
+                <p className={cn("font-barlow text-2xl font-medium uppercase")}>
+                  Take A Poster Home
+                </p>
+                <p className={cn("text-xl font-semibold sm:text-3xl")}>
+                  Support independent art by getting our posters!
+                </p>
+              </span>
+              <span className="flex w-full flex-col items-start gap-y-2 text-lg font-medium">
+                <p>
+                  This exhibition has been in the making for over a year, and we
+                  are excited to finally share this work that has meant so much
+                  to us. Our journey hasn&apos;t been easy: given the current
+                  art funding landscape, we chose to remain independent to keep
+                  our voice authentic and unregulated. Unexpectedly, our initial
+                  venue closed just three months before the exhibition, and Hase
+                  Studio generously opened their doors to us.
+                </p>
+                <p>
+                  To help cover our production costs, we&apos;re offering three
+                  A3 posters created for the exhibition, based on The European
+                  Space Agency&apos;s Sentinel satellite visualizations. These
+                  images reflect Moisture Stress, Moisture Index, and False
+                  Color in the Almería region in late July 2025.{" "}
+                </p>
+                <p>
+                  Posters are available on a sliding scale, with a suggested
+                  minimum of 10€ to cover production costs. If you are
+                  interested, please leave your name, contact, and the poster(s)
+                  you&apos;d like in the form below. We&apos;ll be in touch to
+                  arrange payment and collection.
+                </p>
+                <p>
+                  Thank you for supporting this exhibition and for following
+                  these quiet journeys from afar to home.
+                </p>
+              </span>
             </div>
-          </section>
+          </div>
 
-          <section id="holdstart posters" className="panel">
-            <p className="last"></p>
-          </section>
+          <div
+            id="posters"
+            className={cn(
+              "text-foreground mx-auto flex h-full w-full max-w-[85dvw] flex-col items-center justify-start py-10",
+            )}
+          >
+            <div className="grid w-full grid-cols-[max-content_auto] rounded-4xl bg-white/90 p-6 pb-8 sm:px-14 sm:pt-12 sm:pb-16">
+              <div className={cn("flex items-center gap-10")}>
+                <div className={cn("flex flex-col gap-3")}>
+                  <Image
+                    src="/images/p1-mini.jpg"
+                    width={300}
+                    height={400}
+                    alt="poster 1"
+                  />
+                  <p className={cn("!font-ubuntu font-medium")}>
+                    Moisture Index
+                  </p>
+                </div>
+                <div className={cn("flex flex-col gap-3")}>
+                  <Image
+                    src="/images/p2-mini.jpg"
+                    width={300}
+                    height={400}
+                    alt="poster 2"
+                  />
+                  <p className={cn("!font-ubuntu font-medium")}>
+                    Moisture Stress
+                  </p>
+                </div>
+                <div className={cn("flex flex-col gap-3")}>
+                  <Image
+                    src="/images/p3-mini.jpg"
+                    width={300}
+                    height={400}
+                    alt="poster 3"
+                  />
+                  <p className={cn("!font-ubuntu font-medium")}>False Color</p>
+                </div>
+              </div>
+              <div
+                id="contact-form "
+                className={cn("flex flex-col items-center gap-3")}
+              >
+                <p className={cn("!font-ubuntu font-medium")}>
+                  Get in touch with us!
+                </p>
+                <Input
+                  className={cn(
+                    "text-foreground h-12 w-full max-w-[70%] bg-white text-base",
+                  )}
+                  placeholder="heh"
+                />
+                <Input
+                  className={cn(
+                    "text-foreground h-12 w-full max-w-[70%] bg-white text-base",
+                  )}
+                  placeholder="huh"
+                />
+              </div>
+            </div>
+          </div>
           <Footer />
         </main>
         <BackToTop />

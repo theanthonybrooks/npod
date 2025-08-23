@@ -36,7 +36,12 @@ const navBarLinks = [
   { href: "/", text: "Home", mobile: true, page: "program" },
   { href: "/#hours", text: "Open Hours", mobile: true, page: "all" },
   { href: "/#program", text: "Program", mobile: true, page: "home" },
-  { href: "/#about", text: "About", mobile: false, page: "all" },
+  {
+    href: "/#collaborators",
+    text: "Collaborators",
+    mobile: false,
+    page: "all",
+  },
   { href: "/#support", text: "Prints", mobile: false, page: "all" },
 ];
 

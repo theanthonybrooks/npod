@@ -39,9 +39,16 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
           {slides.map((slide, i) => {
             return (
               <div
-                className="embla__slide flex-[0_0_100%] 2xl:flex-[0_0_33.333%]"
+                className="embla__slide relative flex-[0_0_100%] 2xl:flex-[0_0_33.333%]"
                 key={i}
               >
+                <div
+                  className="francis absolute top-1/2 left-0 z-50 h-full w-10 translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                  onClick={() => {
+                    console.log("clicked");
+                    onDotButtonClick(i > 0 ? i - 1 : slides.length - 1);
+                  }}
+                />
                 <AboutCard
                   key={slide.name}
                   name={slide.name}
@@ -54,6 +61,13 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
                     // lastSlide && "mr-10",
                     // firstSlide && "ml-4",
                   )}
+                />
+                <div
+                  className="francis absolute top-1/2 right-0 z-50 h-full w-10 translate-x-1/4 -translate-y-1/2 cursor-pointer"
+                  onClick={() => {
+                    console.log("clicked");
+                    onDotButtonClick(i === slides?.length ? i - 1 : i + 1);
+                  }}
                 />
               </div>
             );
