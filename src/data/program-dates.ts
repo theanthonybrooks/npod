@@ -28,4 +28,39 @@ export const programData = [
     description:
       "To close the exhibition, we gather for a final evening of conversation and reflection. Through a curatorial walk, we will unfold the connections between water, food, and care across the works.",
   },
+  {
+    title: "Finissage: with Curatorial Walkthrough",
+    start: new Date("2025-09-14T17:00:00"),
+    end: new Date("2025-09-14T19:00:00"),
+    description:
+      "To close the exhibition, we gather for a final evening of conversation and reflection. Through a curatorial walk, we will unfold the connections between water, food, and care across the works.",
+  },
+  {
+    title: "Finissage: with Curatorial Walkthrough",
+    start: new Date("2025-09-14T17:00:00"),
+    end: new Date("2025-09-14T19:00:00"),
+    description:
+      "To close the exhibition, we gather for a final evening of conversation and reflection. Through a curatorial walk, we will unfold the connections between water, food, and care across the works.",
+  },
+  {
+    title: "Finissage: with Curatorial Walkthrough",
+    start: new Date("2025-09-14T17:00:00"),
+    end: new Date("2025-09-14T19:00:00"),
+    description:
+      "To close the exhibition, we gather for a final evening of conversation and reflection. Through a curatorial walk, we will unfold the connections between water, food, and care across the works.",
+  },
+  {
+    title: "Finissage: with Curatorial Walkthrough",
+    start: new Date("2025-09-14T17:00:00"),
+    end: new Date("2025-09-14T19:00:00"),
+    description:
+      "To close the exhibition, we gather for a final evening of conversation and reflection. Through a curatorial walk, we will unfold the connections between water, food, and care across the works.",
+  },
+  {
+    title: "Finissage: with Curatorial Walkthrough",
+    start: new Date("2025-09-14T17:00:00"),
+    end: new Date("2025-09-14T19:00:00"),
+    description:
+      "To close the exhibition, we gather for a final evening of conversation and reflection. Through a curatorial walk, we will unfold the connections between water, food, and care across the works.",
+  },
 ];
