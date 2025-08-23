@@ -22,21 +22,7 @@ export const programData = [
       "The fig trees carry many meanings across cultures, from religious symbol to everyday fruit, but beyond their familiar symbolism in Europe, figs also hold diverse identities and stories elsewhere. In this conversation, Isabel Law and Zeren Oruc explore the fig as motif in the exhibition, tracing its layered histories, overlooked varieties, and personal resonances, followed by a fig-based offering by Martin Karl Kufeita.",
   },
   {
-    title: "Finissage: with Curatial Walkthrough",
-    start: new Date("2025-09-14T17:00:00"),
-    end: new Date("2025-09-14T19:00:00"),
-    description:
-      "To close the exhibition, we gather for a final evening of conversation and reflection. Through a curatorial walk, we will unfold the connections between water, food, and care across the works.",
-  },
-  {
-    title: "Finissage: with Curatial Walkthrough",
-    start: new Date("2025-09-14T17:00:00"),
-    end: new Date("2025-09-14T19:00:00"),
-    description:
-      "To close the exhibition, we gather for a final evening of conversation and reflection. Through a curatorial walk, we will unfold the connections between water, food, and care across the works.",
-  },
-  {
-    title: "Finissage: with Curatial Walkthrough",
+    title: "Finissage: with Curatorial Walkthrough",
     start: new Date("2025-09-14T17:00:00"),
     end: new Date("2025-09-14T19:00:00"),
     description:
