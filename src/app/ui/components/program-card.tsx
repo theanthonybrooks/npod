@@ -58,7 +58,7 @@ export const ProgramCard = ({
           <p className="text-foreground/70">({displayTimeLeft})</p>
         )}
       </span>
-      <p className="mt-3 text-start text-lg font-medium">{description}</p>
+      <p className="mt-3 text-start text-lg">{description}</p>
     </div>
   );
 };

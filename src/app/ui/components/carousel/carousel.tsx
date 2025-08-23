@@ -4,72 +4,9 @@ import { Artist } from "@/data/artist-info";
 import { cn } from "@/utils/utils";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
-import React, { ReactNode, useCallback } from "react";
+import React from "react";
 import { NextButton, PrevButton, usePrevNextButtons } from "./carousel-buttons";
 import { DotButton, useDotButton } from "./carousel-dot-btn";
-
-interface CarouselProps {
-  data: {
-    title: string;
-    description: ReactNode;
-  }[];
-}
-
-export default function Carousel({ data }: CarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  return (
-    <div className="embla overflow-hidden" ref={emblaRef}>
-      <div className="embla__container flex">
-        {/* <div className="min-w-0 flex-[0_0_100%] px-4">
-          <div className="flex h-64 items-center justify-center bg-red-300">
-            Slide 1
-          </div>
-        </div>
-        <div className="min-w-0 flex-[0_0_100%] px-4">
-          <div className="flex h-64 items-center justify-center bg-blue-300">
-            Slide 2
-          </div>
-        </div>
-        <div className="min-w-0 flex-[0_0_100%] px-4">
-          <div className="flex h-64 items-center justify-center bg-green-300">
-            Slide 3
-          </div>
-        </div> */}
-        {data.map((item, index) => (
-          <AboutCard
-            key={item.title}
-            name={item.title}
-            description={item.description}
-            className={cn("embla__slide")}
-          />
-        ))}
-      </div>
-      <div className="mt-4 flex justify-between">
-        <button
-          onClick={scrollPrev}
-          className="rounded bg-gray-800 px-4 py-2 text-white"
-        >
-          Prev
-        </button>
-        <button
-          onClick={scrollNext}
-          className="rounded bg-gray-800 px-4 py-2 text-white"
-        >
-          Next
-        </button>
-      </div>
-    </div>
-  );
-}
 
 type PropType = {
   slides: Artist[];
@@ -101,9 +38,11 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
                 key={i}
               >
                 <AboutCard
-                  key={slide.title}
-                  name={slide.title}
+                  key={slide.name}
+                  name={slide.name}
                   description={slide.description}
+                  mobileDesc={slide.mobileDesc}
+                  link={slide.link}
                   className={cn(
                     "embla__slide__number",
 

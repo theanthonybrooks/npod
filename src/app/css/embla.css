@@ -2,7 +2,8 @@
   /* max-width: 85vw; */
   margin: auto;
   --slide-height: 19rem;
-  --slide-spacing: 1rem;
+  --slide-spacing: 2rem;
+  --slide-spacing-mobile: 1rem;
 }
 .embla__viewport {
   overflow: hidden;
@@ -17,6 +18,9 @@
   transform: translate3d(0, 0, 0);
   min-width: 0;
   padding-left: var(--slide-spacing);
+  @media (max-width: 768px) {
+    padding-left: var(--slide-spacing-mobile);
+  }
 }
 .embla__slide__number {
   box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);

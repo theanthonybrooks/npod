@@ -271,7 +271,7 @@ export default function Home() {
             )}
             ref={madeByRef}
           >
-            <div className=" ">
+            <div className="flex h-full items-center justify-center">
               <h2 className="lines">Section Five</h2>
               <h2 className="lines">a SMILE</h2>
             </div>
