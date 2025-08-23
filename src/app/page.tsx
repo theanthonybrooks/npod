@@ -241,7 +241,7 @@ export default function Home() {
           >
             <div
               className={cn(
-                "m-auto flex h-full flex-col items-center justify-center gap-12",
+                "m-auto flex h-full flex-col items-center justify-end gap-12",
               )}
             >
               <h2 className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]">

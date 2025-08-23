@@ -1,4 +1,5 @@
 import { cn } from "@/utils/utils";
+import Link from "next/link";
 import { ReactNode } from "react";
 
 interface AboutCardProps {
@@ -15,7 +16,17 @@ export const AboutCard = ({ name, description, className }: AboutCardProps) => {
         className,
       )}
     >
-      <p className="!font-ubuntu text-left text-2xl font-medium">{name}</p>
+      {/* TODO:fix the styling for hover. */}
+
+      <Link
+        className={cn(
+          "hover:unerline !font-ubuntu text-left text-2xl font-medium decoration-2 hover:underline-offset-4 active:underline-offset-2",
+        )}
+        href={`/artist/${name}`}
+      >
+        {name}
+      </Link>
+
       <span className="flex flex-col items-start gap-2 text-start">
         {description}
       </span>

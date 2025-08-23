@@ -92,7 +92,7 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
 
   return (
     <div className="embla xl:max-w-[85vw]">
-      <div className="embla__viewport px-10 sm:px-20 xl:px-0" ref={emblaRef}>
+      <div className="embla__viewport px-10 sm:px-18 xl:px-0" ref={emblaRef}>
         <div className="embla__container max-w-[85vw]">
           {slides.map((slide, i) => {
             return (
@@ -117,13 +117,13 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
         </div>
       </div>
 
-      <div className="embla__controls">
+      <div className="embla__controls sr-only">
         <div className="embla__buttons">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
 
-        <div className="embla__dots">
+        <div className="embla__dots sr-only">
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
