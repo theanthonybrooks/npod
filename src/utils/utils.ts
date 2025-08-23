@@ -1,47 +1,68 @@
-import { clsx, type ClassValue } from "clsx"
-import * as React from "react"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from "clsx";
+import * as React from "react";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export const setParamIfNotDefault = <T>(
   params: URLSearchParams,
   key: string,
   value: T,
-  defaultValue: T
+  defaultValue: T,
 ) => {
   if (value === defaultValue) {
-    params.delete(key)
+    params.delete(key);
   } else {
-    params.set(key, String(value))
+    params.set(key, String(value));
   }
-}
+};
 
 export function arraysShareValue<T>(arr1: T[], arr2: T[]): boolean {
-  const set1 = new Set(arr1)
-  return arr2.some((item) => set1.has(item))
+  const set1 = new Set(arr1);
+  return arr2.some((item) => set1.has(item));
 }
 
 export function capitalize(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1)
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-const MOBILE_BREAKPOINT = 768
+const MOBILE_BREAKPOINT = 768;
+const DESKTOP_BREAKPOINT = 1400;
 
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
+  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(
+    undefined,
+  );
 
   React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
     const onChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    }
-    mql.addEventListener("change", onChange)
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    return () => mql.removeEventListener("change", onChange)
-  }, [])
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+    mql.addEventListener("change", onChange);
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
 
-  return !!isMobile
+  return !!isMobile;
+}
+
+export function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = React.useState<boolean | undefined>(
+    undefined,
+  );
+
+  React.useEffect(() => {
+    const mql = window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
+    const onChange = () => {
+      setIsDesktop(window.innerWidth >= DESKTOP_BREAKPOINT);
+    };
+    mql.addEventListener("change", onChange);
+    setIsDesktop(window.innerWidth >= DESKTOP_BREAKPOINT);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
+  return !!isDesktop;
 }

@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 
-interface Artist {
-  name: string;
+export interface Artist {
+  title: string;
   description: ReactNode;
 }
 
 export const artistInfo: Artist[] = [
   {
-    name: "Isabel Law",
+    title: "Isabel Law",
     description: (
       <>
         <p>
@@ -33,7 +33,7 @@ export const artistInfo: Artist[] = [
     ),
   },
   {
-    name: "Martin Karl Kufeita",
+    title: "Martin Karl Kufeita",
     description: (
       <>
         <p>Martin Martin, who are you?</p>
@@ -48,7 +48,7 @@ export const artistInfo: Artist[] = [
     ),
   },
   {
-    name: "Zeren Oruc",
+    title: "Zeren Oruc",
     description: (
       <>
         <p>

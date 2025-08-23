@@ -3,11 +3,12 @@
 import { BackToTop } from "@/app/ui/components/back-to-top";
 import { Navbar } from "@/app/ui/components/navbar";
 import { useAppleDevice } from "@/contexts/apple-device-context";
-import { cn } from "@/utils/utils";
+import { cn, useIsDesktop } from "@/utils/utils";
 import { useGSAP } from "@gsap/react";
+import { EmblaOptionsType } from "embla-carousel";
 import { gsap } from "gsap";
 
-import { AboutCard } from "@/app/ui/components/about-card";
+import { EmblaCarousel } from "@/app/ui/components/carousel/carousel";
 import { Footer } from "@/app/ui/components/footer";
 import { ProgramCard } from "@/app/ui/components/program-card";
 import { artistInfo } from "@/data/artist-info";
@@ -20,6 +21,7 @@ import { useRef, useState } from "react";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Home() {
+  const isDesktop = useIsDesktop();
   const { isAppleDevice } = useAppleDevice();
 
   const [bgFade, setBgFade] = useState(false);
@@ -82,6 +84,13 @@ export default function Home() {
 
   const nextEvent =
     sortedEvents.find((item) => !isBefore(item.end, now)) || sortedEvents[0];
+
+  const OPTIONS: EmblaOptionsType = {
+    align: "start",
+    loop: true,
+    containScroll: "trimSnaps",
+    watchDrag: isDesktop ? false : true,
+  };
 
   return (
     <>
@@ -232,24 +241,22 @@ export default function Home() {
           >
             <div
               className={cn(
-                "m-auto flex h-full max-w-[85vw] flex-col items-center justify-center gap-12",
+                "m-auto flex h-full flex-col items-center justify-center gap-12",
               )}
             >
               <h2 className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]">
-                This exhibition is made by
+                Collaborators
               </h2>
-              <div
-                className={cn(
-                  "flex flex-col justify-between gap-8 md:flex-row",
-                )}
-              >
-                {artistInfo.map((artist) => (
+              <div className={cn("w-full")}>
+                {/* {artistInfo.map((artist) => (
                   <AboutCard
                     key={artist.name}
                     name={artist.name}
                     description={artist.description}
                   />
-                ))}
+                ))} */}
+                {/* <Carousel data={artistInfo} /> */}
+                <EmblaCarousel slides={artistInfo} options={OPTIONS} />
               </div>
             </div>
           </section>
