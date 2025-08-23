@@ -8,5 +8,7 @@ export function isAppleUA(ua: string) {
     /Safari\//.test(ua) &&
     !/(Chrome|CriOS|Chromium|Edg|OPR|Brave|DuckDuckGo)/i.test(ua);
 
-  return isIOS || isMacSafari;
+  const isAppleDevice = isIOS || isMacSafari;
+
+  return { isIOS, isMacSafari, isAppleDevice };
 }

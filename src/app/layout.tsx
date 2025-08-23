@@ -27,7 +27,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const ua = (await headers()).get("user-agent") ?? "";
-  const isAppleDevice = isAppleUA(ua);
+  const result = isAppleUA(ua);
+  const { isIOS, isMacSafari, isAppleDevice } = result || {
+    isIOS: false,
+    isMacSafari: false,
+    isAppleDevice: false,
+  };
 
   return (
     <html lang="en">
@@ -44,7 +49,11 @@ export default async function RootLayout({
           "bg-[##cc903a] antialiased",
         )}
       >
-        <AppleDeviceProvider isAppleDevice={isAppleDevice}>
+        <AppleDeviceProvider
+          isAppleDevice={isAppleDevice}
+          isIOS={isIOS}
+          isMacSafari={isMacSafari}
+        >
           {children}
         </AppleDeviceProvider>
       </body>

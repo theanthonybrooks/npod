@@ -19,7 +19,7 @@ import { useRef, useState } from "react";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Test() {
-  const isAppleDevice = useAppleDevice();
+  const { isAppleDevice } = useAppleDevice();
   const isMobile = useIsMobile();
 
   const [bgFade, setBgFade] = useState(false);
