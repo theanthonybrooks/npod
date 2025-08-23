@@ -15,15 +15,13 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Program() {
   const panelClass =
-    "h-full  bg-no-repeat bg-top bg-[length:auto] sm:bg-[length:100dvw_auto] ";
+    "h-full  bg-no-repeat bg-top bg-[length:auto_100vh] sm:bg-[length:100vw_auto] bg-fixed";
   const sortedEvents = [...programData].sort(
     (a, b) => a.start.getTime() - b.start.getTime(),
   );
   return (
     <>
-      <div
-        className={cn("bg-[url('/images/backg_large_longer.jpg')]", panelClass)}
-      >
+      <div className={cn("bg-[url('/images/mini_bg.jpg')]", panelClass)}>
         <Navbar page="program" />
 
         <div id="program" className={cn("py-10")}>

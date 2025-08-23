@@ -47,8 +47,8 @@ export const ProgramCard = ({
   }
 
   return (
-    <div className="text-foreground flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 sm:px-14">
-      <p className="font-barlow text-left text-2xl font-semibold">{title}</p>
+    <div className="text-foreground flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 pb-8 sm:px-14">
+      <p className="!font-ubuntu text-left text-2xl font-medium">{title}</p>
       <span className="flex items-baseline gap-2">
         <p className={cn("text-lg font-medium italic")}>{timeString}</p>
         {shouldDisplayTime && displayTimeLeft && (
