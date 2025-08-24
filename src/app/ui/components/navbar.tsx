@@ -2,7 +2,7 @@
 import { cn, useIsMobile } from "@/utils/utils";
 
 import Link from "next/link";
-import { FaRegCompass } from "react-icons/fa";
+import { PiMapPinAreaFill } from "react-icons/pi";
 
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 
@@ -78,12 +78,14 @@ export const Navbar = ({ className, page }: NavbarProps) => {
       )}
     >
       <div className="flex items-center gap-x-10">
-        <FaRegCompass
-          className={cn(
-            "text-foreground size-8",
-            // isMobile && "absolute left-4 top-4"
-          )}
-        />
+        <Link href="https://maps.app.goo.gl/enh2Jm1Z48Krz1VAA" target="_blank">
+          <PiMapPinAreaFill
+            className={cn(
+              "text-foreground size-8",
+              // isMobile && "absolute left-4 top-4"
+            )}
+          />
+        </Link>
         <span className="hidden lg:block">
           September 5<sup>th</sup> - 14<sup>th</sup>
         </span>

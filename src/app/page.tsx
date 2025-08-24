@@ -213,14 +213,18 @@ export default function Home() {
                   Europe&apos;s food system.
                 </p>
                 {/* TODO: add address link to google maps */}
-                <span className="text-foreground flex w-full flex-col items-start rounded-4xl bg-white/90 px-6 py-4 sm:w-[350px]">
+                <Link
+                  href="https://maps.app.goo.gl/enh2Jm1Z48Krz1VAA"
+                  target="_blank"
+                  className="text-foreground flex w-full cursor-pointer flex-col items-start rounded-4xl bg-white/90 px-6 py-4 sm:w-[350px]"
+                >
                   <p className="!font-ubuntu text-xl font-medium">
                     Hase Studio
                   </p>
                   <p className="!font-ubuntu text-[1.2rem] italic">
                     Weisestrasse 22, 12049, Berlin
                   </p>
-                </span>
+                </Link>
               </div>
               <div id="hours" />
               <div className="flex flex-col items-start gap-4 sm:col-start-1 sm:hidden sm:gap-8">

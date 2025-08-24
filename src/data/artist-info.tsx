@@ -44,7 +44,7 @@ export const artistInfo: Artist[] = [
         </p>
       </>
     ),
-    link: "https://www.isabellaw.com/",
+    link: "https://isabelelaw.cargo.site",
   },
   {
     name: "Martin Karl Kufeita",
@@ -77,7 +77,7 @@ export const artistInfo: Artist[] = [
         </p>
       </>
     ),
-    link: "https://www.martinkufeita.com/",
+    link: "https://www.instagram.com/swusone/",
   },
   {
     name: "Zeren Oruc",

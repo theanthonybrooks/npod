@@ -121,7 +121,7 @@ export const ImgCarousel = ({
         className="embla__viewport flex justify-center px-10 sm:px-15 2xl:px-0"
         ref={emblaRef}
       >
-        <div className="embla__container max-w-[90vw]">
+        <div className="embla__container max-w-[85vw]">
           {slides.map((slide, i) => {
             return (
               <div
