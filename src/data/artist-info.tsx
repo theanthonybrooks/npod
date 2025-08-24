@@ -70,10 +70,9 @@ export const artistInfo: Artist[] = [
       <>
         <p>Martin Karl Kufeita is a Berlin-based artist.</p>
         <p>
-          Martin Karl Kufieta&apos;s artistic practice combines both individual
-          and collective approaches. His interdisciplinary work explores various
-          themes, with his Polish heritage playing a continuous and central
-          role.
+          His artistic practice combines both individual and collective
+          approaches. His interdisciplinary work explores various themes, with
+          his Polish heritage playing a continuous and central role.
         </p>
       </>
     ),
