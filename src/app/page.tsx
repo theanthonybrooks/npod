@@ -12,6 +12,7 @@ import { EmblaCarousel } from "@/app/ui/components/carousel/carousel";
 import { Footer } from "@/app/ui/components/footer";
 import { Input } from "@/app/ui/components/input";
 import { ProgramCard } from "@/app/ui/components/program-card";
+import { Textarea } from "@/components/ui/textarea";
 import { artistInfo } from "@/data/artist-info";
 import { programData } from "@/data/program-dates";
 import { isBefore } from "date-fns";
@@ -19,6 +20,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { LuLoader } from "react-icons/lu";
 
 const isValidEmail = (email: string) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -27,6 +29,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Home() {
   const isDesktop = useIsDesktop();
   const { isAppleDevice } = useAppleDevice();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const [bgFade, setBgFade] = useState(false);
   const [madeFixed, setMadeFixed] = useState(false);
@@ -36,9 +39,44 @@ export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const isValidForm = Boolean(isValidEmail(email) && message);
+  const isValidForm = Boolean(
+    isValidEmail(email) && message && message.length >= 10 && name,
+  );
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+
+  const handleReset = () => {
+    setName("");
+    setEmail("");
+    setMessage("");
+    setError("");
+    setPending(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    for (const [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+
+    // Option 2: convert to object
+    const data = Object.fromEntries(formData.entries());
+    try {
+      setPending(true);
+    } catch (error) {
+      setError("Something went wrong");
+      setPending(false);
+    } finally {
+      setTimeout(() => {
+        console.log(data);
+        handleReset();
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+      }, 2000);
+    }
+  };
 
   // const { scrollY } = useScroll();
 
@@ -272,50 +310,8 @@ export default function Home() {
 
           <div
             id="support"
-            className={cn(
-              "flex h-[160vh] w-full max-w-[85dvw] items-end sm:h-screen",
-            )}
-          >
-            <div className="sdh flex w-full max-w-[clamp(390px,60vw,1000em)] flex-col gap-8 py-10 text-start">
-              <span className="flex w-full flex-col items-start gap-y-2">
-                <p className={cn("font-barlow text-2xl font-medium uppercase")}>
-                  Take A Poster Home
-                </p>
-                <p className={cn("text-xl font-semibold sm:text-3xl")}>
-                  Support independent art by getting our posters!
-                </p>
-              </span>
-              <span className="flex w-full flex-col items-start gap-y-2 text-lg font-medium">
-                <p>
-                  This exhibition has been in the making for over a year, and we
-                  are excited to finally share this work that has meant so much
-                  to us. Our journey hasn&apos;t been easy: given the current
-                  art funding landscape, we chose to remain independent to keep
-                  our voice authentic and unregulated. Unexpectedly, our initial
-                  venue closed just three months before the exhibition, and Hase
-                  Studio generously opened their doors to us.
-                </p>
-                <p>
-                  To help cover our production costs, we&apos;re offering three
-                  A3 posters created for the exhibition, based on The European
-                  Space Agency&apos;s Sentinel satellite visualizations. These
-                  images reflect Moisture Stress, Moisture Index, and False
-                  Color in the Almería region in late July 2025.{" "}
-                </p>
-                <p>
-                  Posters are available on a sliding scale, with a suggested
-                  minimum of 10€ to cover production costs. If you are
-                  interested, please leave your name, contact, and the poster(s)
-                  you&apos;d like in the form below. We&apos;ll be in touch to
-                  arrange payment and collection.
-                </p>
-                <p>
-                  Thank you for supporting this exhibition and for following
-                  these quiet journeys from afar to home.
-                </p>
-              </span>
-            </div>
-          </div>
+            className={cn("flex h-[40vh] w-full max-w-[85dvw] items-end")}
+          ></div>
 
           <div
             id="posters"
@@ -323,71 +319,164 @@ export default function Home() {
               "text-foreground mx-auto flex h-full w-full max-w-[85dvw] flex-col items-center justify-start py-10",
             )}
           >
-            <div className="flex w-full flex-col gap-y-6 rounded-4xl bg-white/90 p-6 pb-8 sm:px-14 sm:pt-12 sm:pb-16 lg:grid lg:grid-cols-[max-content_auto]">
-              <div className={cn("flex items-center gap-10")}>
-                <div className={cn("flex flex-col gap-3")}>
-                  <Image
-                    src="/images/p1-mini.jpg"
-                    width={300}
-                    height={400}
-                    alt="poster 1"
-                  />
-                  <p className={cn("!font-ubuntu font-medium")}>
-                    Moisture Index
+            <div className="flex w-full flex-col gap-y-16 rounded-4xl bg-white/90 p-6 pb-8 sm:px-14 sm:pt-12 sm:pb-16">
+              <div className="sdh flex w-full max-w-[clamp(390px,60vw,1000em)] flex-col gap-8 text-start">
+                <span className="flex w-full flex-col items-start gap-y-2">
+                  <p
+                    className={cn("font-barlow text-2xl font-medium uppercase")}
+                  >
+                    Take A Poster Home
                   </p>
-                </div>
-                <div className={cn("flex flex-col gap-3")}>
-                  <Image
-                    src="/images/p2-mini.jpg"
-                    width={300}
-                    height={400}
-                    alt="poster 2"
-                  />
-                  <p className={cn("!font-ubuntu font-medium")}>
-                    Moisture Stress
+                  <p className={cn("text-xl font-semibold sm:text-3xl")}>
+                    Support independent art by getting our posters!
                   </p>
-                </div>
-                <div className={cn("flex flex-col gap-3")}>
-                  <Image
-                    src="/images/p3-mini.jpg"
-                    width={300}
-                    height={400}
-                    alt="poster 3"
-                  />
-                  <p className={cn("!font-ubuntu font-medium")}>False Color</p>
-                </div>
+                </span>
+                <span className="flex w-full flex-col items-start gap-y-2 text-lg">
+                  <p>
+                    This exhibition has been in the making for over a year, and
+                    we are excited to finally share this work that has meant so
+                    much to us. Our journey hasn&apos;t been easy: given the
+                    current art funding landscape, we chose to remain
+                    independent to keep our voice authentic and unregulated.
+                    Unexpectedly, our initial venue closed just three months
+                    before the exhibition, and Hase Studio generously opened
+                    their doors to us.
+                  </p>
+                  <p>
+                    To help cover our production costs, we&apos;re offering
+                    three A3 posters created for the exhibition, based on The
+                    European Space Agency&apos;s Sentinel satellite
+                    visualizations. These images reflect Moisture Stress,
+                    Moisture Index, and False Color in the Almería region in
+                    late July 2025.{" "}
+                  </p>
+                  <p>
+                    Posters are available on a sliding scale, with a suggested
+                    minimum of 10€ to cover production costs. If you are
+                    interested, please leave your name, contact, and the
+                    poster(s) you&apos;d like in the form below. We&apos;ll be
+                    in touch to arrange payment and collection.
+                  </p>
+                  <p>
+                    Thank you for supporting this exhibition and for following
+                    these quiet journeys from afar to home.
+                  </p>
+                </span>
               </div>
               <div
-                id="contact-form "
-                className={cn("flex flex-col items-center gap-3")}
+                className={cn(
+                  "3xl:grid 3xl:grid-cols-[max-content_auto] flex w-full flex-col gap-y-6",
+                )}
               >
-                <p className={cn("!font-ubuntu font-medium")}>
-                  Get in touch with us!
-                </p>
-                <Input
+                <div
                   className={cn(
-                    "text-foreground h-12 w-full bg-white px-4 text-base sm:max-w-[70%]",
+                    "flex flex-col items-center gap-10 lg:flex-row",
                   )}
-                  placeholder="Your contact"
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                />
-                <Input
+                >
+                  <div className={cn("flex flex-col gap-3")}>
+                    <Image
+                      src="/images/p1-mini.jpg"
+                      width={300}
+                      height={400}
+                      alt="poster 1"
+                      className={cn("max-w-[14em] 2xl:max-w-none")}
+                    />
+                    <p className={cn("!font-ubuntu font-medium")}>
+                      Moisture Index
+                    </p>
+                  </div>
+                  <div className={cn("flex flex-col gap-3")}>
+                    <Image
+                      src="/images/p2-mini.jpg"
+                      width={300}
+                      height={400}
+                      alt="poster 2"
+                      className={cn("max-w-[14em] 2xl:max-w-none")}
+                    />
+                    <p className={cn("!font-ubuntu font-medium")}>
+                      Moisture Stress
+                    </p>
+                  </div>
+                  <div className={cn("flex flex-col gap-3")}>
+                    <Image
+                      src="/images/p3-mini.jpg"
+                      width={300}
+                      height={400}
+                      alt="poster 3"
+                      className={cn("max-w-[14em] 2xl:max-w-none")}
+                    />
+                    <p className={cn("!font-ubuntu font-medium")}>
+                      False Color
+                    </p>
+                  </div>
+                </div>
+                <div
+                  id="contact-form "
                   className={cn(
-                    "text-foreground h-12 w-full bg-white px-4 text-base sm:max-w-[70%]",
+                    "flex flex-col items-center justify-center gap-5 pb-5 xl:min-w-md",
                   )}
-                  onChange={(e) => setMessage(sanitizeInput(e.target.value))}
-                  placeholder="Your message"
-                />
-                {isValidForm && (
-                  <button
+                >
+                  <p className={cn("!font-ubuntu font-medium")}>
+                    Get in touch with us!
+                  </p>
+                  <form
+                    ref={formRef}
+                    onSubmit={handleSubmit}
                     className={cn(
-                      "border-foreground font-ubuntu w-full rounded-lg border-2 bg-white px-6 py-4 font-medium",
+                      "flex w-full flex-col items-center gap-4 sm:max-w-[70%]",
                     )}
                   >
-                    Send Message
-                  </button>
-                )}
+                    <Input
+                      className={cn(
+                        "text-foreground border-foreground h-12 w-full rounded-lg bg-white px-4 text-base",
+                      )}
+                      placeholder="Name"
+                      onChange={(e) => setName(e.target.value)}
+                      name="name"
+                    />
+                    <Input
+                      className={cn(
+                        "text-foreground border-foreground h-12 w-full rounded-lg bg-white px-4 text-base",
+                      )}
+                      placeholder="Email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      type="email"
+                      name="email"
+                    />
+
+                    <Textarea
+                      className={cn(
+                        "text-foreground border-foreground h-24 w-full resize-none rounded-lg bg-white px-4 text-base",
+                      )}
+                      onChange={(e) =>
+                        setMessage(sanitizeInput(e.target.value))
+                      }
+                      placeholder="Your message"
+                      name="message"
+                    />
+
+                    <button
+                      disabled={!isValidForm}
+                      className={cn(
+                        "border-foreground font-ubuntu bg-foreground w-full rounded-lg border-2 px-6 py-4 font-medium text-white hover:scale-[102%] hover:cursor-pointer active:scale-95 disabled:pointer-events-none disabled:opacity-50",
+                      )}
+                    >
+                      {pending ? (
+                        <span
+                          className={cn(
+                            "flex w-full items-center justify-center gap-1",
+                          )}
+                        >
+                          Sending...
+                          <LuLoader className={cn("size-4 animate-spin")} />
+                        </span>
+                      ) : (
+                        "Send Message"
+                      )}
+                    </button>
+                    {error && <p className="text-destructive">{error}</p>}
+                  </form>
+                </div>
               </div>
             </div>
           </div>

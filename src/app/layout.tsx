@@ -20,6 +20,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "No Point of Departure",
   description: "5-14 September 2025 at Hase Studio, Neukölln, Berlin DE",
+  icons: {
+    icon: "/images/favicon_3b.png",
+    shortcut: "/images/favicon_3b.png",
+  },
 };
 
 export default async function RootLayout({
