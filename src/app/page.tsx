@@ -379,7 +379,9 @@ export default function Home() {
                       width={300}
                       height={400}
                       alt="poster 1"
-                      className={cn("3xl:max-w-none xl:max-w-[11em]")}
+                      className={cn(
+                        "3xl:max-w-none xl:max-w-[12em] 2xl:max-w-[16em]",
+                      )}
                     />
                     <p className={cn("!font-ubuntu font-medium")}>
                       Moisture Index
@@ -391,7 +393,9 @@ export default function Home() {
                       width={300}
                       height={400}
                       alt="poster 2"
-                      className={cn("3xl:max-w-none xl:max-w-[11em]")}
+                      className={cn(
+                        "3xl:max-w-none xl:max-w-[12em] 2xl:max-w-[16em]",
+                      )}
                     />
                     <p className={cn("!font-ubuntu font-medium")}>
                       Moisture Stress
@@ -403,7 +407,9 @@ export default function Home() {
                       width={300}
                       height={400}
                       alt="poster 3"
-                      className={cn("3xl:max-w-none xl:max-w-[11em]")}
+                      className={cn(
+                        "3xl:max-w-none xl:max-w-[12em] 2xl:max-w-[16em]",
+                      )}
                     />
                     <p className={cn("!font-ubuntu font-medium")}>
                       False Color
