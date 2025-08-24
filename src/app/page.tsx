@@ -3,7 +3,7 @@
 import { BackToTop } from "@/app/ui/components/back-to-top";
 import { Navbar } from "@/app/ui/components/navbar";
 import { useAppleDevice } from "@/contexts/apple-device-context";
-import { cn, sanitizeInput, useIsDesktop } from "@/utils/utils";
+import { cn, useIsDesktop } from "@/utils/utils";
 import { useGSAP } from "@gsap/react";
 import { EmblaOptionsType } from "embla-carousel";
 import { gsap } from "gsap";
@@ -12,6 +12,7 @@ import { EmblaCarousel } from "@/app/ui/components/carousel/carousel";
 import { Footer } from "@/app/ui/components/footer";
 import { Input } from "@/app/ui/components/input";
 import { ProgramCard } from "@/app/ui/components/program-card";
+import { SelectSimple } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { artistInfo } from "@/data/artist-info";
 import { programData } from "@/data/program-dates";
@@ -38,17 +39,16 @@ export default function Home() {
   const madeByRef = useRef<HTMLDivElement | null>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const isValidForm = Boolean(
-    isValidEmail(email) && message && message.length >= 10 && name,
-  );
+  const [poster, setPoster] = useState("");
+  const isValidForm = Boolean(isValidEmail(email) && poster && name);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
 
   const handleReset = () => {
     setName("");
     setEmail("");
-    setMessage("");
+
+    setPoster("");
     setError("");
     setPending(false);
   };
@@ -62,6 +62,11 @@ export default function Home() {
 
     // Option 2: convert to object
     const data = Object.fromEntries(formData.entries());
+    console.log(data);
+    const combinedData = {
+      ...data,
+      poster,
+    };
     try {
       setPending(true);
     } catch (error) {
@@ -69,7 +74,7 @@ export default function Home() {
       setPending(false);
     } finally {
       setTimeout(() => {
-        console.log(data);
+        console.log(combinedData);
         handleReset();
         if (formRef.current) {
           formRef.current.reset();
@@ -365,7 +370,7 @@ export default function Home() {
               </div>
               <div
                 className={cn(
-                  "flex w-full flex-col gap-y-6 xl:grid xl:grid-cols-[max-content_auto]",
+                  "flex w-full flex-col gap-y-20 xl:grid xl:grid-cols-[max-content_auto]",
                 )}
               >
                 <div
@@ -449,15 +454,23 @@ export default function Home() {
                       type="email"
                       name="email"
                     />
+                    <SelectSimple
+                      options={[
+                        { label: "Moisture Index", value: "moisture_index" },
+                        { label: "Moisture Stress", value: "moisture_stress" },
+                        { label: "False Color", value: "false_color" },
+                      ]}
+                      onChange={(value) => setPoster(value)}
+                      value={poster}
+                      placeholder="Select a poster (required)"
+                      className="border-foreground !h-12 w-full bg-white data-[placeholder]:italic"
+                    />
 
                     <Textarea
                       className={cn(
                         "text-foreground border-foreground h-24 w-full resize-none rounded-lg bg-white px-4 text-base",
                       )}
-                      onChange={(e) =>
-                        setMessage(sanitizeInput(e.target.value))
-                      }
-                      placeholder="Your message"
+                      placeholder="Your message (optional)"
                       name="message"
                     />
 
