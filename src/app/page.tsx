@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { EmblaOptionsType } from "embla-carousel";
 import { gsap } from "gsap";
 
+import { sendEmail } from "@/app/actions/sendEmail";
 import {
   EmblaCarousel,
   ImgCarousel,
@@ -47,6 +48,7 @@ export default function Home() {
   const isValidForm = Boolean(isValidEmail(email) && poster && name);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  const [submitCounter, setSubmitCounter] = useState(0);
 
   const handleReset = () => {
     setName("");
@@ -58,27 +60,33 @@ export default function Home() {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setSubmitCounter((prev) => prev + 1);
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     const combinedData = {
-      ...data,
+      name: data.name as string,
+      email: data.email as string,
       poster,
+      message: (data.message as string) || "",
     };
-    try {
-      setPending(true);
-    } catch (error) {
-      setError("Something went wrong");
-      setPending(false);
-    } finally {
-      setTimeout(() => {
-        console.log(combinedData);
-        handleReset();
-        if (formRef.current) {
-          formRef.current.reset();
-        }
-      }, 2000);
+
+    setPending(true);
+    const result = await sendEmail({
+      name: combinedData.name,
+      email: combinedData.email,
+      poster: combinedData.poster,
+      message: combinedData.message,
+    });
+
+    console.log(result);
+    if (!result.success) {
+      setError(result.error || "Something went wrong");
+      return;
     }
+
+    handleReset();
+    formRef.current?.reset();
   };
 
   // const { scrollY } = useScroll();
@@ -464,7 +472,7 @@ export default function Home() {
                     />
 
                     <button
-                      disabled={!isValidForm}
+                      disabled={!isValidForm || submitCounter >= 5}
                       className={cn(
                         "border-foreground font-ubuntu bg-foreground w-full rounded-xl border-2 px-6 py-3 font-medium text-white hover:scale-[102%] hover:cursor-pointer active:scale-95 disabled:pointer-events-none disabled:opacity-50",
                       )}
