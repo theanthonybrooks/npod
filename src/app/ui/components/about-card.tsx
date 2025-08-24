@@ -43,7 +43,7 @@ export const AboutCard = ({
         </span>
         <Link
           className={cn(
-            "!font-ubuntu text-left italic decoration-2 hover:underline hover:underline-offset-4 active:underline-offset-2",
+            "!font-barlow text-left font-normal italic decoration-2 hover:underline hover:underline-offset-4 active:underline-offset-2",
           )}
           href={link}
           target="_blank"
