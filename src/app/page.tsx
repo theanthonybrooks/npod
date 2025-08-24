@@ -425,7 +425,7 @@ export default function Home() {
                   >
                     <Input
                       className={cn(
-                        "text-foreground border-foreground h-12 w-full rounded-lg bg-white px-4 text-base",
+                        "text-foreground border-foreground h-12 w-full rounded-xl bg-white px-4 text-base",
                       )}
                       placeholder="Name"
                       onChange={(e) => setName(e.target.value)}
@@ -433,7 +433,7 @@ export default function Home() {
                     />
                     <Input
                       className={cn(
-                        "text-foreground border-foreground h-12 w-full rounded-lg bg-white px-4 text-base",
+                        "text-foreground border-foreground h-12 w-full rounded-xl bg-white px-4 text-base",
                       )}
                       placeholder="Email"
                       onChange={(e) => setEmail(e.target.value)}
@@ -448,12 +448,12 @@ export default function Home() {
                       onChange={(value) => setPoster(value)}
                       value={poster}
                       placeholder="Select a poster (required)"
-                      className="border-foreground !h-12 w-full bg-white data-[placeholder]:italic"
+                      className="border-foreground !h-12 w-full rounded-xl bg-white data-[placeholder]:italic"
                     />
 
                     <Textarea
                       className={cn(
-                        "text-foreground border-foreground h-24 w-full resize-none rounded-lg bg-white px-4 text-base",
+                        "text-foreground border-foreground h-24 w-full resize-none rounded-xl bg-white px-4 text-base",
                       )}
                       placeholder="Your message (optional)"
                       name="message"
@@ -462,7 +462,7 @@ export default function Home() {
                     <button
                       disabled={!isValidForm}
                       className={cn(
-                        "border-foreground font-ubuntu bg-foreground w-full rounded-lg border-2 px-6 py-4 font-medium text-white hover:scale-[102%] hover:cursor-pointer active:scale-95 disabled:pointer-events-none disabled:opacity-50",
+                        "border-foreground font-ubuntu bg-foreground w-full rounded-xl border-2 px-6 py-3 font-medium text-white hover:scale-[102%] hover:cursor-pointer active:scale-95 disabled:pointer-events-none disabled:opacity-50",
                       )}
                     >
                       {pending ? (
