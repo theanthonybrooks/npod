@@ -8,13 +8,17 @@ import { useGSAP } from "@gsap/react";
 import { EmblaOptionsType } from "embla-carousel";
 import { gsap } from "gsap";
 
-import { EmblaCarousel } from "@/app/ui/components/carousel/carousel";
+import {
+  EmblaCarousel,
+  ImgCarousel,
+} from "@/app/ui/components/carousel/carousel";
 import { Footer } from "@/app/ui/components/footer";
 import { Input } from "@/app/ui/components/input";
 import { ProgramCard } from "@/app/ui/components/program-card";
 import { SelectSimple } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { artistInfo } from "@/data/artist-info";
+import { posterData } from "@/data/img-data";
 import { programData } from "@/data/program-dates";
 import { isBefore } from "date-fns";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -56,13 +60,7 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    for (const [key, value] of formData.entries()) {
-      console.log(key, value);
-    }
-
-    // Option 2: convert to object
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
     const combinedData = {
       ...data,
       poster,
@@ -375,52 +373,40 @@ export default function Home() {
               >
                 <div
                   className={cn(
-                    "flex flex-col items-center gap-10 lg:flex-row",
+                    "hidden flex-col items-center gap-10 md:flex md:flex-row",
                   )}
                 >
-                  <div className={cn("flex flex-col gap-3")}>
-                    <Image
-                      src="/images/p1-mini.jpg"
-                      width={300}
-                      height={400}
-                      alt="poster 1"
+                  {posterData.map((indPoster, index) => (
+                    <div
                       className={cn(
-                        "3xl:max-w-none xl:max-w-[12em] 2xl:max-w-[16em]",
+                        "flex flex-col items-center gap-3 hover:cursor-pointer",
                       )}
-                    />
-                    <p className={cn("!font-ubuntu font-medium")}>
-                      Moisture Index
-                    </p>
-                  </div>
-                  <div className={cn("flex flex-col gap-3")}>
-                    <Image
-                      src="/images/p2-mini.jpg"
-                      width={300}
-                      height={400}
-                      alt="poster 2"
-                      className={cn(
-                        "3xl:max-w-none xl:max-w-[12em] 2xl:max-w-[16em]",
-                      )}
-                    />
-                    <p className={cn("!font-ubuntu font-medium")}>
-                      Moisture Stress
-                    </p>
-                  </div>
-                  <div className={cn("flex flex-col gap-3")}>
-                    <Image
-                      src="/images/p3-mini.jpg"
-                      width={300}
-                      height={400}
-                      alt="poster 3"
-                      className={cn(
-                        "3xl:max-w-none xl:max-w-[12em] 2xl:max-w-[16em]",
-                      )}
-                    />
-                    <p className={cn("!font-ubuntu font-medium")}>
-                      False Color
-                    </p>
-                  </div>
+                      key={indPoster.value}
+                      onClick={() => setPoster(indPoster.value)}
+                    >
+                      <Image
+                        src={indPoster.url}
+                        width={300}
+                        height={400}
+                        alt={indPoster.name}
+                        className={cn(
+                          "3xl:max-w-none shadow-md hover:cursor-pointer xl:max-w-[12em] 2xl:max-w-[16em]",
+                          poster === indPoster.value
+                            ? "ring-foreground/50 rounded-sm ring-2 ring-offset-5"
+                            : "",
+                        )}
+                      />
+                      <p className={cn("!font-ubuntu font-medium")}>
+                        {indPoster.name}
+                      </p>
+                    </div>
+                  ))}
                 </div>
+                <ImgCarousel
+                  slides={posterData}
+                  options={OPTIONS}
+                  className="sm:hidden"
+                />
                 <div
                   id="contact-form "
                   className={cn(
@@ -455,11 +441,10 @@ export default function Home() {
                       name="email"
                     />
                     <SelectSimple
-                      options={[
-                        { label: "Moisture Index", value: "moisture_index" },
-                        { label: "Moisture Stress", value: "moisture_stress" },
-                        { label: "False Color", value: "false_color" },
-                      ]}
+                      options={posterData.map((poster) => ({
+                        label: poster.name,
+                        value: poster.value,
+                      }))}
                       onChange={(value) => setPoster(value)}
                       value={poster}
                       placeholder="Select a poster (required)"

@@ -111,6 +111,9 @@ p {
 
   /* opacity: 50%; */
   background-size: auto 100vh; /* 100vw auto; */
+  @media (width <= 768px) {
+    background-size: auto;
+  }
   background-repeat: no-repeat;
 
   background-position: top center;
