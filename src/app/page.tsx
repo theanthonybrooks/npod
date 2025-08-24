@@ -365,7 +365,7 @@ export default function Home() {
               </div>
               <div
                 className={cn(
-                  "3xl:grid 3xl:grid-cols-[max-content_auto] flex w-full flex-col gap-y-6",
+                  "flex w-full flex-col gap-y-6 xl:grid xl:grid-cols-[max-content_auto]",
                 )}
               >
                 <div
@@ -379,7 +379,7 @@ export default function Home() {
                       width={300}
                       height={400}
                       alt="poster 1"
-                      className={cn("max-w-[14em] 2xl:max-w-none")}
+                      className={cn("3xl:max-w-none xl:max-w-[11em]")}
                     />
                     <p className={cn("!font-ubuntu font-medium")}>
                       Moisture Index
@@ -391,7 +391,7 @@ export default function Home() {
                       width={300}
                       height={400}
                       alt="poster 2"
-                      className={cn("max-w-[14em] 2xl:max-w-none")}
+                      className={cn("3xl:max-w-none xl:max-w-[11em]")}
                     />
                     <p className={cn("!font-ubuntu font-medium")}>
                       Moisture Stress
@@ -403,7 +403,7 @@ export default function Home() {
                       width={300}
                       height={400}
                       alt="poster 3"
-                      className={cn("max-w-[14em] 2xl:max-w-none")}
+                      className={cn("3xl:max-w-none xl:max-w-[11em]")}
                     />
                     <p className={cn("!font-ubuntu font-medium")}>
                       False Color
