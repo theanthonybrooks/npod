@@ -40,6 +40,9 @@ export default function Home() {
   const [bgFade, setBgFade] = useState(false);
   const [madeFixed, setMadeFixed] = useState(false);
 
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const introRef = useRef<HTMLDivElement | null>(null);
+
   const bgRef = useRef<HTMLDivElement | null>(null);
   const madeByRef = useRef<HTMLDivElement | null>(null);
   const [name, setName] = useState("");
@@ -89,40 +92,83 @@ export default function Home() {
     formRef.current?.reset();
   };
 
-  // const { scrollY } = useScroll();
-
   useGSAP(() => {
+    if (titleRef.current) {
+      const lines = titleRef.current.querySelectorAll("h1");
+
+      gsap.set(lines, { y: 100, opacity: 0 });
+
+      gsap.timeline({ delay: 0.5 }).to(lines, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power4.out",
+        stagger: 0.3,
+      });
+    }
+
+    if (introRef.current) {
+      const text = introRef.current.querySelector("p");
+      const card = introRef.current.querySelector("a");
+
+      gsap.set([text, card], { y: 50, opacity: 0 });
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: introRef.current,
+            start: "top 30%",
+          },
+        })
+        .to(text, {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power4.out",
+        })
+        .to(
+          card,
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power4.out",
+          },
+          "-=0.4",
+        );
+    }
+
     const bg = bgRef.current;
     const made = madeByRef.current;
-    if ((isAppleDevice && !bg) || !made) return;
+    if (made && (!isAppleDevice || bg)) {
+      ScrollTrigger.create({
+        trigger: made,
+        start: "top top",
+        end: "bottom bottom",
+        onEnter: () => {
+          setMadeFixed(true);
+        },
 
-    ScrollTrigger.create({
-      trigger: made,
-      start: "top top",
-      end: "bottom bottom",
-      onEnter: () => {
-        setMadeFixed(true);
-      },
+        onEnterBack: () => {
+          setMadeFixed(false);
+        },
+        // markers: true,
+      });
+      ScrollTrigger.create({
+        trigger: made,
+        start: "top top",
+        end: "html",
 
-      onEnterBack: () => {
-        setMadeFixed(false);
-      },
-      // markers: true,
-    });
-    ScrollTrigger.create({
-      trigger: made,
-      start: "top top",
-      end: "html",
+        onEnter: () => {
+          setBgFade(true);
+        },
 
-      onEnter: () => {
-        setBgFade(true);
-      },
-
-      onEnterBack: () => {
-        setBgFade(false);
-      },
-      // markers: true,
-    });
+        onEnterBack: () => {
+          setBgFade(false);
+        },
+        // markers: true,
+      });
+    }
 
     const handleLoad = () => ScrollTrigger.refresh();
     window.addEventListener("load", handleLoad);
@@ -173,6 +219,7 @@ export default function Home() {
             )}
           >
             <div
+              ref={titleRef}
               className={cn(
                 "mx-auto flex h-full w-full max-w-[85vw] flex-col items-start justify-center text-white/90 sm:pt-10",
               )}
@@ -210,6 +257,7 @@ export default function Home() {
             className={cn("bg-[url('/images/2.jpg')]", panelClass)}
           >
             <div
+              ref={introRef}
               className={cn(
                 "m-auto grid h-full max-w-[85vw] items-center justify-center lg:grid-cols-2",
               )}
@@ -234,9 +282,12 @@ export default function Home() {
                   </p>
                 </Link>
               </div>
-              <div id="hours" />
+
               <div className="flex flex-col items-start gap-4 sm:col-start-1 sm:hidden sm:gap-8">
-                <h2 className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]">
+                <h2
+                  id="openhours"
+                  className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]"
+                >
                   Open Hours
                 </h2>
 
@@ -258,7 +309,10 @@ export default function Home() {
               )}
             >
               <div className="hidden h-full flex-col items-start gap-4 sm:col-start-1 sm:flex sm:gap-8">
-                <h2 className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]">
+                <h2
+                  id="hours"
+                  className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]"
+                >
                   Open Hours
                 </h2>
 
@@ -302,7 +356,6 @@ export default function Home() {
             </div>
           </section>
           <section
-            id="collaborators"
             // className={cn("bg-[url('/images/4.jpg')]", panelClass)}
             className={cn(
               !isAppleDevice && "bg-[url('/images/4.jpg')]",
@@ -317,7 +370,10 @@ export default function Home() {
                 "m-auto flex h-full flex-col items-center justify-end gap-12",
               )}
             >
-              <h2 className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]">
+              <h2
+                id="collaborators"
+                className="font-ubuntu text-left text-4xl font-medium sm:text-6xl sm:leading-[1.1]"
+              >
                 Collaborators
               </h2>
               <div className={cn("w-full")}>
@@ -332,7 +388,7 @@ export default function Home() {
           ></div>
 
           <div
-            id="posters"
+            id="prints"
             className={cn(
               "text-foreground mx-auto flex h-full w-full max-w-[85dvw] flex-col items-center justify-start py-10",
             )}

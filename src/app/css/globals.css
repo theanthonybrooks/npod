@@ -193,6 +193,13 @@ section {
   margin: 0;
 }
 
+#hours,
+#openhours,
+#program,
+#collaborators,
+#prints {
+  scroll-margin-top: 150px;
+}
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);

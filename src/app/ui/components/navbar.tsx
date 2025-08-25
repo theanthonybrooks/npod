@@ -33,16 +33,43 @@ const navbarVariants: Variants = {
 };
 
 const navBarLinks = [
-  { href: "/", text: "Home", mobile: true, page: "program" },
-  { href: "/#hours", text: "Open Hours", mobile: true, page: "all" },
-  { href: "/#program", text: "Program", mobile: true, page: "home" },
+  { href: "/", text: "Home", mobile: true, desktop: true, page: "program" },
+  {
+    href: "/#hours",
+    text: "Open Hours",
+    mobile: false,
+    desktop: true,
+    page: "all",
+  },
+  {
+    href: "/#openhours",
+    text: "Open Hours",
+    mobile: true,
+    desktop: false,
+    page: "all",
+  },
+
+  {
+    href: "/#program",
+    text: "Program",
+    mobile: true,
+    desktop: true,
+    page: "home",
+  },
   {
     href: "/#collaborators",
     text: "Collaborators",
     mobile: false,
+    desktop: true,
     page: "all",
   },
-  { href: "/#support", text: "Prints", mobile: false, page: "all" },
+  {
+    href: "/#prints",
+    text: "Prints",
+    mobile: false,
+    desktop: true,
+    page: "all",
+  },
 ];
 
 export const Navbar = ({ className, page }: NavbarProps) => {
@@ -101,6 +128,7 @@ export const Navbar = ({ className, page }: NavbarProps) => {
               className={cn(
                 "decoration-2 hover:underline hover:underline-offset-4 active:underline-offset-2",
                 !link.mobile && "hidden sm:block",
+                !link.desktop && "sm:hidden",
               )}
             >
               {link.text}
