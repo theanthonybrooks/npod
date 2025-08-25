@@ -16,6 +16,7 @@ export async function sendEmail(formData: {
       to: "zerenoruc@gmail.com",
       subject: `NPOD Poster Request: ${formData.poster}`,
       html: `
+      <p >Ahoy there! Seems ya have some interest in a poster! Below ye shall find the details :) - Captain Charlie Barley</p>
         <p><strong>Name:</strong> ${formData.name}</p>
         <p><strong>Email:</strong> ${formData.email}</p>
         <p><strong>Poster:</strong> ${formData.poster}</p>
