@@ -291,7 +291,10 @@ export default function Home() {
                       );
                     })()}
 
-                  <Link href="/program" className="text-xl font-medium">
+                  <Link
+                    href="/program"
+                    className="text-xl font-medium hover:underline hover:underline-offset-4 active:underline-offset-2"
+                  >
                     View full program
                   </Link>
                 </div>

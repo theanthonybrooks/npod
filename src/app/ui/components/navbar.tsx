@@ -81,7 +81,7 @@ export const Navbar = ({ className, page }: NavbarProps) => {
         <Link href="https://maps.app.goo.gl/enh2Jm1Z48Krz1VAA" target="_blank">
           <PiMapPinAreaFill
             className={cn(
-              "text-foreground size-8",
+              "text-foreground size-8 hover:text-[#325bf0]",
               // isMobile && "absolute left-4 top-4"
             )}
           />
