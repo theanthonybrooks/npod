@@ -95,16 +95,32 @@ export default function Home() {
   useGSAP(() => {
     if (titleRef.current) {
       const lines = titleRef.current.querySelectorAll("h1");
+      const date = titleRef.current.querySelector("span");
 
-      gsap.set(lines, { y: 100, opacity: 0 });
+      gsap.set([...lines, date], { y: 100, opacity: 0 });
 
-      gsap.timeline({ delay: 0.5 }).to(lines, {
+      const tl = gsap.timeline({ delay: 0.5 });
+
+      tl.to(lines, {
         y: 0,
         opacity: 1,
         duration: 1,
         ease: "power4.out",
         stagger: 0.3,
       });
+
+      if (date) {
+        tl.to(
+          date,
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power4.out",
+          },
+          "+=0.1",
+        );
+      }
     }
 
     if (introRef.current) {
