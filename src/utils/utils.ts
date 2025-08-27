@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import * as React from "react";
+import sanitizeHtml from "sanitize-html";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -72,3 +73,10 @@ export const sanitizeInput = (value: string) => {
   div.textContent = value;
   return div.innerHTML;
 };
+
+export function cleanInput(input: string): string {
+  return sanitizeHtml(input, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+}
