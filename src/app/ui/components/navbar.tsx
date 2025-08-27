@@ -99,13 +99,13 @@ export const Navbar = ({ className, page }: NavbarProps) => {
         setActiveId(null);
       }
     } else {
-      if (latest >= 0.2 && latest < 0.5) {
+      if (latest >= 0.2 && latest < 0.35) {
         setActiveId("hours");
-      } else if (latest >= 0.5 && latest < 0.6) {
+      } else if (latest >= 0.35 && latest < 0.6) {
         setActiveId("program");
-      } else if (latest >= 0.6 && latest < 0.9) {
+      } else if (latest >= 0.6 && latest < 0.75) {
         setActiveId("collaborators");
-      } else if (latest >= 0.9) {
+      } else if (latest >= 0.75) {
         setActiveId("prints");
       } else {
         setActiveId(null);
