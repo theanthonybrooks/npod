@@ -268,7 +268,7 @@ export default function Home() {
           </header>
 
           <section
-            id="intro"
+            // id="intro"
             className={cn("bg-[url('/images/2.jpg')]", panelClass)}
           >
             <div

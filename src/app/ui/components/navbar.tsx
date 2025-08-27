@@ -76,7 +76,8 @@ export const Navbar = ({ className, page }: NavbarProps) => {
   const isMobile = useIsMobile();
   const programPage = page === "program";
   const homePage = page === "home";
-  const { scrollY } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
+  const [activeId, setActiveId] = useState<string | null>(null);
   const [navTrigger, setNavTrigger] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -86,6 +87,33 @@ export const Navbar = ({ className, page }: NavbarProps) => {
       setNavTrigger(false);
     }
   });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (programPage) return;
+    if (isMobile) {
+      if (latest >= 0.2 && latest < 0.3) {
+        setActiveId("openhours");
+      } else if (latest >= 0.3 && latest < 0.4) {
+        setActiveId("program");
+      } else {
+        setActiveId(null);
+      }
+    } else {
+      if (latest >= 0.2 && latest < 0.5) {
+        setActiveId("hours");
+      } else if (latest >= 0.5 && latest < 0.6) {
+        setActiveId("program");
+      } else if (latest >= 0.6 && latest < 0.9) {
+        setActiveId("collaborators");
+      } else if (latest >= 0.9) {
+        setActiveId("prints");
+      } else {
+        setActiveId(null);
+      }
+    }
+  });
+
+  const activeLinkClass = cn("underline underline-offset-4");
 
   return (
     <motion.div
@@ -121,19 +149,26 @@ export const Navbar = ({ className, page }: NavbarProps) => {
       <div className="flex items-center gap-x-10">
         {navBarLinks
           .filter((link) => link.page === "all" || link.page === page)
-          .map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "decoration-2 hover:underline hover:underline-offset-4 active:underline-offset-2",
-                !link.mobile && "hidden sm:block",
-                !link.desktop && "sm:hidden",
-              )}
-            >
-              {link.text}
-            </Link>
-          ))}
+          .map((link) => {
+            const linkId = link.href.startsWith("/#")
+              ? link.href.slice(2)
+              : null;
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "decoration-2 hover:underline hover:underline-offset-4 active:underline-offset-2",
+                  !link.mobile && "hidden sm:block",
+                  !link.desktop && "sm:hidden",
+                  activeId === linkId?.toLowerCase() && activeLinkClass,
+                )}
+              >
+                {link.text}
+              </Link>
+            );
+          })}
       </div>
     </motion.div>
   );
