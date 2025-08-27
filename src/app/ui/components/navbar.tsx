@@ -99,9 +99,9 @@ export const Navbar = ({ className, page }: NavbarProps) => {
         setActiveId(null);
       }
     } else {
-      if (latest >= 0.2 && latest < 0.35) {
+      if (latest >= 0.2 && latest < 0.38) {
         setActiveId("hours");
-      } else if (latest >= 0.35 && latest < 0.6) {
+      } else if (latest >= 0.38 && latest < 0.6) {
         setActiveId("program");
       } else if (latest >= 0.6 && latest < 0.75) {
         setActiveId("collaborators");
