@@ -89,7 +89,7 @@ export const Navbar = ({ className, page }: NavbarProps) => {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log(latest);
+    // console.log(latest);
     if (programPage) return;
     if (isMobile) {
       if (latest >= 0.2 && latest < 0.3) {
@@ -100,7 +100,7 @@ export const Navbar = ({ className, page }: NavbarProps) => {
         setActiveId(null);
       }
     } else {
-      if (latest >= 0.2 && latest < 0.39) {
+      if (latest >= 0.3 && latest < 0.39) {
         setActiveId("hours");
       } else if (latest >= 0.39 && latest < 0.6) {
         setActiveId("program");
