@@ -82,7 +82,6 @@ export default function Home() {
       message: combinedData.message,
     });
 
-    console.log(result);
     if (!result.success) {
       setError(result.error || "Something went wrong");
       return;
