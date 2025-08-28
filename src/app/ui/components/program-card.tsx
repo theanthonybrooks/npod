@@ -55,7 +55,7 @@ export const ProgramCard = ({
 
   useEffect(() => {
     const saved = loadSavedEvents();
-    setIsSaved(saved.some((e: any) => e.key === eventKey));
+    setIsSaved(saved.some((ev) => ev.key === eventKey));
   }, [eventKey]);
 
   const handleAddToCalendar = () => {
