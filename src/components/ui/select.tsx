@@ -215,10 +215,7 @@ export const SelectSimple = ({
         className={cn(className, "*:data-[slot=select-value]:pr-4")}
         tabIndex={tabIndex}
       >
-        <SelectValue
-          placeholder={placeholder}
-          className="jacob pr-4 text-red-600"
-        />
+        <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
         {options.map((option) => (

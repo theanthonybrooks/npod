@@ -212,7 +212,7 @@ export default function Home() {
 
   const OPTIONS: EmblaOptionsType = {
     align: "start",
-    loop: true,
+    loop: false,
     containScroll: "trimSnaps",
     watchDrag: isDesktop ? false : true,
   };
