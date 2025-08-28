@@ -50,6 +50,7 @@ export default function Home() {
   const [poster, setPoster] = useState("");
   const isValidForm = Boolean(isValidEmail(email) && poster && name);
   const [pending, setPending] = useState(false);
+  const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
   const [submitCounter, setSubmitCounter] = useState(0);
 
@@ -60,6 +61,10 @@ export default function Home() {
     setPoster("");
     setError("");
     setPending(false);
+    setSent(true);
+    setTimeout(() => {
+      setSent(false);
+    }, 2000);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -510,6 +515,7 @@ export default function Home() {
                     )}
                   >
                     <Input
+                      tabIndex={1}
                       className={cn(
                         "text-foreground border-foreground h-12 w-full rounded-xl bg-white px-4 text-base",
                       )}
@@ -518,6 +524,7 @@ export default function Home() {
                       name="name"
                     />
                     <Input
+                      tabIndex={2}
                       className={cn(
                         "text-foreground border-foreground h-12 w-full rounded-xl bg-white px-4 text-base",
                       )}
@@ -527,6 +534,7 @@ export default function Home() {
                       name="email"
                     />
                     <SelectSimple
+                      tabIndex={3}
                       options={posterData.map((poster) => ({
                         label: poster.name,
                         value: poster.value,
@@ -538,6 +546,7 @@ export default function Home() {
                     />
 
                     <Textarea
+                      tabIndex={4}
                       className={cn(
                         "text-foreground border-foreground h-24 w-full resize-none rounded-xl bg-white px-4 text-base",
                       )}
@@ -560,6 +569,8 @@ export default function Home() {
                           Sending...
                           <LuLoader className={cn("size-4 animate-spin")} />
                         </span>
+                      ) : sent ? (
+                        "Sent!"
                       ) : (
                         "Send Message"
                       )}

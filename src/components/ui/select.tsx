@@ -190,6 +190,7 @@ export const SelectSimple = ({
   value,
   className,
   placeholder,
+  tabIndex,
 }: {
   options: {
     label: string;
@@ -199,10 +200,11 @@ export const SelectSimple = ({
   value: string;
   placeholder: string;
   className?: string;
+  tabIndex?: number;
 }) => {
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className={cn(className)}>
+      <SelectTrigger className={cn(className)} tabIndex={tabIndex}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>

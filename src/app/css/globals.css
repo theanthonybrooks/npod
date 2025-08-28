@@ -43,6 +43,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --border-1p5: 1.5px;
+
   /* screen sizes */
   --breakpoint-3xl: 1920px;
 }

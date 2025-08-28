@@ -1,5 +1,12 @@
+"use client";
+
+import { TooltipSimple } from "@/components/ui/tooltip";
+import { generateICSFile } from "@/utils/calendarFns";
 import { cn } from "@/utils/utils";
 import { format, intervalToDuration, isBefore } from "date-fns";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { LuCalendarCheck, LuCalendarHeart } from "react-icons/lu";
 
 interface ProgramCardProps {
   title: string;
@@ -17,6 +24,7 @@ export const ProgramCard = ({
   end,
 }: ProgramCardProps) => {
   let displayTimeLeft: string | null = null;
+  const [isSaved, setIsSaved] = useState(false);
 
   const now = new Date();
   const ended = isBefore(end, now);
@@ -24,6 +32,41 @@ export const ProgramCard = ({
   const endStr = format(end, "h aaa");
 
   const timeString = `${startStr} - ${endStr}`;
+  const url = "https://npod.online/program";
+  const location = "https://maps.app.goo.gl/enh2Jm1Z48Krz1VAA";
+
+  const icsLink = generateICSFile(
+    title,
+    start,
+    end,
+    location,
+    description,
+    url,
+  );
+
+  const eventKey = `${title}-${start.toISOString()}`;
+
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("savedEvents") ?? "[]");
+    setIsSaved(saved.some((e: any) => e.key === eventKey));
+  }, [eventKey]);
+
+  const handleAddToCalendar = () => {
+    const saved = JSON.parse(localStorage.getItem("savedEvents") ?? "[]");
+
+    const newEvent = {
+      key: eventKey,
+      title,
+      start: start.toISOString(),
+      end: end.toISOString(),
+    };
+
+    if (!saved.some((e: any) => e.key === eventKey)) {
+      const updated = [...saved, newEvent];
+      localStorage.setItem("savedEvents", JSON.stringify(updated));
+      setIsSaved(true); // update UI immediately
+    }
+  };
 
   if (!ended) {
     const eventDuration = (end.getTime() - start.getTime()) / (1000 * 60 * 60);
@@ -51,6 +94,24 @@ export const ProgramCard = ({
       <p className="!font-ubuntu text-left text-2xl font-medium">{title}</p>
       <span className="flex items-baseline gap-2">
         <p className={cn("text-lg font-medium italic")}>{timeString}</p>
+        {!ended && (
+          <TooltipSimple
+            content={isSaved ? "Saved" : "Save to calendar"}
+            side="top"
+          >
+            <Link
+              href={icsLink}
+              download={`${title.replace(/\s+/g, "_")}.ics`}
+              onClick={handleAddToCalendar}
+            >
+              {isSaved ? (
+                <LuCalendarCheck className="text-foreground -mb-0.5 hidden size-4 cursor-pointer self-center hover:scale-105 active:scale-95 md:block" />
+              ) : (
+                <LuCalendarHeart className="text-foreground -mb-0.5 hidden size-4 animate-pulse cursor-pointer self-center hover:scale-105 active:scale-95 md:block" />
+              )}
+            </Link>
+          </TooltipSimple>
+        )}
         {shouldDisplayTime && displayTimeLeft && (
           <p className="text-foreground/70">({displayTimeLeft})</p>
         )}
@@ -59,6 +120,22 @@ export const ProgramCard = ({
         )}
       </span>
       <p className="mt-3 text-start text-lg">{description}</p>
+      <Link
+        href={icsLink}
+        download={`${title.replace(/\s+/g, "_")}.ics`}
+        className={cn("w-full")}
+        onClick={handleAddToCalendar}
+      >
+        <button
+          className={cn(
+            "border-foreground font-ubuntu text-foreground mt-4 w-full rounded-xl border-[1.5px] bg-white/90 px-6 py-2 font-medium hover:scale-[102%] hover:cursor-pointer active:scale-95 disabled:pointer-events-none disabled:opacity-50 md:hidden",
+          )}
+        >
+          {isSaved ? "Saved" : "Add to calendar"}
+        </button>
+      </Link>
+
+      {/* <p className={cn("mt-2 md:hidden")}>Add to calendar</p> */}
     </div>
   );
 };
