@@ -19,9 +19,16 @@ function SelectGroup({
 }
 
 function SelectValue({
+  className,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Value>) {
-  return <SelectPrimitive.Value data-slot="select-value" {...props} />;
+  return (
+    <SelectPrimitive.Value
+      data-slot="select-value"
+      className={className}
+      {...props}
+    />
+  );
 }
 
 function SelectTrigger({
@@ -204,8 +211,14 @@ export const SelectSimple = ({
 }) => {
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className={cn(className)} tabIndex={tabIndex}>
-        <SelectValue placeholder={placeholder} />
+      <SelectTrigger
+        className={cn(className, "*:data-[slot=select-value]:pr-4")}
+        tabIndex={tabIndex}
+      >
+        <SelectValue
+          placeholder={placeholder}
+          className="jacob pr-4 text-red-600"
+        />
       </SelectTrigger>
       <SelectContent>
         {options.map((option) => (

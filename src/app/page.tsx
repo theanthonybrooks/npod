@@ -517,7 +517,7 @@ export default function Home() {
                     <Input
                       tabIndex={1}
                       className={cn(
-                        "text-foreground border-foreground h-12 w-full rounded-xl bg-white px-4 text-base",
+                        "text-foreground border-foreground h-12 w-full rounded-xl bg-white px-4 text-base placeholder:text-base",
                       )}
                       placeholder="Name"
                       onChange={(e) => setName(e.target.value)}
@@ -526,7 +526,7 @@ export default function Home() {
                     <Input
                       tabIndex={2}
                       className={cn(
-                        "text-foreground border-foreground h-12 w-full rounded-xl bg-white px-4 text-base",
+                        "text-foreground border-foreground h-12 w-full rounded-xl bg-white px-4 text-base placeholder:text-base",
                       )}
                       placeholder="Email"
                       onChange={(e) => setEmail(e.target.value)}
@@ -542,13 +542,13 @@ export default function Home() {
                       onChange={(value) => setPoster(value)}
                       value={poster}
                       placeholder="Select a poster (required)"
-                      className="border-foreground !h-12 w-full rounded-xl bg-white data-[placeholder]:italic"
+                      className="border-foreground data data-[placeholder]:font-barlow !h-12 w-full rounded-xl bg-white px-4 data-[placeholder]:text-base data-[placeholder]:italic"
                     />
 
                     <Textarea
                       tabIndex={4}
                       className={cn(
-                        "text-foreground border-foreground h-24 w-full resize-none rounded-xl bg-white px-4 text-base",
+                        "text-foreground border-foreground placeholder:font-barlow h-24 w-full resize-none rounded-xl bg-white px-4 text-base placeholder:text-base",
                       )}
                       placeholder="Your message (optional)"
                       name="message"
