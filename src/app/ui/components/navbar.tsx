@@ -1,5 +1,5 @@
 "use client";
-import { cn, useIsMobile } from "@/utils/utils";
+import { cn, useIsMobile, useIsXLDesktop } from "@/utils/utils";
 
 import Link from "next/link";
 import { PiMapPinAreaFill } from "react-icons/pi";
@@ -74,6 +74,7 @@ const navBarLinks = [
 
 export const Navbar = ({ className, page }: NavbarProps) => {
   const isMobile = useIsMobile();
+  const isXLDesktop = useIsXLDesktop();
   const programPage = page === "program";
   // const homePage = page === "home";
   const { scrollY, scrollYProgress } = useScroll();
@@ -89,13 +90,24 @@ export const Navbar = ({ className, page }: NavbarProps) => {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // console.log(latest);
     if (programPage) return;
     if (isMobile) {
       if (latest >= 0.2 && latest < 0.3) {
         setActiveId("openhours");
       } else if (latest >= 0.3 && latest < 0.4) {
         setActiveId("program");
+      } else {
+        setActiveId(null);
+      }
+    } else if (isXLDesktop) {
+      if (latest >= 0.3 && latest < 0.48) {
+        setActiveId("hours");
+      } else if (latest >= 0.48 && latest < 0.61) {
+        setActiveId("program");
+      } else if (latest >= 0.61 && latest < 0.91) {
+        setActiveId("collaborators");
+      } else if (latest >= 0.91) {
+        setActiveId("prints");
       } else {
         setActiveId(null);
       }

@@ -31,6 +31,7 @@ export function capitalize(str: string) {
 
 const MOBILE_BREAKPOINT = 768;
 const DESKTOP_BREAKPOINT = 1536;
+const XL_DESKTOP_BREAKPOINT = 2400;
 
 export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(
@@ -66,6 +67,24 @@ export function useIsDesktop() {
   }, []);
 
   return !!isDesktop;
+}
+
+export function useIsXLDesktop() {
+  const [isXLDesktop, setIsXLDesktop] = React.useState<boolean | undefined>(
+    undefined,
+  );
+
+  React.useEffect(() => {
+    const mql = window.matchMedia(`(min-width: ${XL_DESKTOP_BREAKPOINT}px)`);
+    const onChange = () => {
+      setIsXLDesktop(window.innerWidth >= XL_DESKTOP_BREAKPOINT);
+    };
+    mql.addEventListener("change", onChange);
+    setIsXLDesktop(window.innerWidth >= XL_DESKTOP_BREAKPOINT);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
+  return !!isXLDesktop;
 }
 
 export const sanitizeInput = (value: string) => {
