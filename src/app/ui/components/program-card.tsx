@@ -16,6 +16,13 @@ interface ProgramCardProps {
   shouldDisplayTime?: boolean;
 }
 
+interface SavedEvent {
+  key: string;
+  title: string;
+  start: string;
+  end: string;
+}
+
 export const ProgramCard = ({
   title,
   description,
@@ -47,24 +54,23 @@ export const ProgramCard = ({
   const eventKey = `${title}-${start.toISOString()}`;
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("savedEvents") ?? "[]");
+    const saved = loadSavedEvents();
     setIsSaved(saved.some((e: any) => e.key === eventKey));
   }, [eventKey]);
 
   const handleAddToCalendar = () => {
-    const saved = JSON.parse(localStorage.getItem("savedEvents") ?? "[]");
+    const saved = loadSavedEvents();
 
-    const newEvent = {
-      key: eventKey,
-      title,
-      start: start.toISOString(),
-      end: end.toISOString(),
-    };
-
-    if (!saved.some((e: any) => e.key === eventKey)) {
+    if (!saved.some((ev) => ev.key === eventKey)) {
+      const newEvent: SavedEvent = {
+        key: eventKey,
+        title,
+        start: start.toISOString(),
+        end: end.toISOString(),
+      };
       const updated = [...saved, newEvent];
-      localStorage.setItem("savedEvents", JSON.stringify(updated));
-      setIsSaved(true); // update UI immediately
+      saveEvents(updated);
+      setIsSaved(true);
     }
   };
 
@@ -138,4 +144,17 @@ export const ProgramCard = ({
       {/* <p className={cn("mt-2 md:hidden")}>Add to calendar</p> */}
     </div>
   );
+};
+
+const loadSavedEvents = (): SavedEvent[] => {
+  try {
+    const raw = localStorage.getItem("savedEvents");
+    return raw ? (JSON.parse(raw) as SavedEvent[]) : [];
+  } catch {
+    return [];
+  }
+};
+
+const saveEvents = (events: SavedEvent[]) => {
+  localStorage.setItem("savedEvents", JSON.stringify(events));
 };

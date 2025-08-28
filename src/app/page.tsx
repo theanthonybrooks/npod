@@ -467,7 +467,7 @@ export default function Home() {
                     "hidden flex-col items-center gap-10 md:flex md:flex-row",
                   )}
                 >
-                  {posterData.map((indPoster, index) => (
+                  {posterData.map((indPoster) => (
                     <div
                       className={cn(
                         "flex flex-col items-center gap-3 hover:cursor-pointer",

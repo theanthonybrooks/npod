@@ -75,7 +75,7 @@ const navBarLinks = [
 export const Navbar = ({ className, page }: NavbarProps) => {
   const isMobile = useIsMobile();
   const programPage = page === "program";
-  const homePage = page === "home";
+  // const homePage = page === "home";
   const { scrollY, scrollYProgress } = useScroll();
   const [activeId, setActiveId] = useState<string | null>(null);
   const [navTrigger, setNavTrigger] = useState(false);
