@@ -6,7 +6,7 @@ export const Footer = () => {
     <footer className="mx-auto flex w-full max-w-[85vw] flex-col items-center gap-4 py-4">
       <div className="text-foreground mx-auto flex w-full max-w-max items-center justify-center gap-1 gap-x-6 rounded-full bg-white/90 p-3 px-4 text-xs text-nowrap sm:flex-row sm:gap-x-12 sm:px-10 sm:py-2.5 sm:text-sm">
         <p className={cn("!font-ubuntu")}>
-          Made by{" "}
+          Site by{" "}
           <Link
             href="https://theanthonybrooks.com"
             className={cn(
