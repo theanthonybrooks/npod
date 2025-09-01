@@ -47,10 +47,10 @@ export const artistInfo: Artist[] = [
     link: "https://isabelelaw.cargo.site",
   },
   {
-    name: "Martin Karl Kufeita",
+    name: "Martin Karl Kufieta",
     description: (
       <>
-        <p>Martin Karl Kufeita is a Berlin-based artist.</p>
+        <p>Martin Karl Kufieta is a Berlin-based artist.</p>
         <p>
           Martin Karl Kufieta&apos;s artistic practice combines both individual
           and collective approaches. His interdisciplinary work explores various
@@ -68,7 +68,7 @@ export const artistInfo: Artist[] = [
     ),
     mobileDesc: (
       <>
-        <p>Martin Karl Kufeita is a Berlin-based artist.</p>
+        <p>Martin Karl Kufieta is a Berlin-based artist.</p>
         <p>
           His artistic practice combines both individual and collective
           approaches. His interdisciplinary work explores various themes, with

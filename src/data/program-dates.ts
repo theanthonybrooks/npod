@@ -12,7 +12,7 @@ export const programData = [
     start: new Date("2025-09-07T15:00:00"),
     end: new Date("2025-09-07T17:00:00"),
     description:
-      "An artist talk with Isabel Law and Martin Karl Kufeita on producing work in new contexts, from residencies to fieldwork. The conversation reflects on how place, distance, and lived experience shape artistic practice.",
+      "An artist talk with Isabel Law and Martin Karl Kufieta on producing work in new contexts, from residencies to fieldwork. The conversation reflects on how place, distance, and lived experience shape artistic practice.",
   },
   {
     title: "From Care to Flavor: Heritage, Industry, and Fermentation",
@@ -26,7 +26,7 @@ export const programData = [
     start: new Date("2025-09-13T17:00:00"),
     end: new Date("2025-09-13T19:00:00"),
     description:
-      "The fig trees carry many meanings across cultures, from religious symbol to everyday fruit, but beyond their familiar symbolism in Europe, figs also hold diverse identities and stories elsewhere. In this conversation, Isabel Law and Zeren Oruc explore the fig as motif in the exhibition, tracing its layered histories, overlooked varieties, and personal resonances, followed by a fig-based offering by Martin Karl Kufeita.",
+      "The fig trees carry many meanings across cultures, from religious symbol to everyday fruit, but beyond their familiar symbolism in Europe, figs also hold diverse identities and stories elsewhere. In this conversation, Isabel Law and Zeren Oruc explore the fig as motif in the exhibition, tracing its layered histories, overlooked varieties, and personal resonances, followed by a fig-based offering by Martin Karl Kufieta.",
   },
   {
     title: "Finissage: with Curatorial Walkthrough",

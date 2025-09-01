@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
 
   // Regex for Apple devices
   const isAppleDevice = /Macintosh|Mac OS X|iPhone|iPad|iPod/i.test(userAgent);
-  console.log("pathname: ", pathname);
+  // console.log("pathname: ", pathname);
   if (pathname !== "/") {
     return NextResponse.redirect(new URL("/", request.url));
   }
