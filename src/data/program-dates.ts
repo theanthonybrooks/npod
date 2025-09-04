@@ -2,8 +2,8 @@ export const programData = [
   {
     title:
       "Reading Landscapes from Above: Maps, Satellites, and Visualizations",
-    start: new Date("2025-09-06T16:00:00"),
-    end: new Date("2025-09-06T18:00:00"),
+    start: new Date("2025-09-07T13:00:00"),
+    end: new Date("2025-09-07T15:00:00"),
     description:
       "A guided exploration on how landscapes are represented through data and satellite images. Taking examples from Sentinel visualizations of Almería, we'll explore how mapping reveals ecological stress and human impact, while also questioning the limits of Western gaze on geography.",
   },

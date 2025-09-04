@@ -1,3 +1,9 @@
 {
-  "conventionalCommits.scopes": ["Styling", "Things", "Analytics", "Data"]
+  "conventionalCommits.scopes": [
+    "Styling",
+    "Things",
+    "Analytics",
+    "Data",
+    "Program"
+  ]
 }
