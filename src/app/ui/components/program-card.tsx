@@ -108,9 +108,18 @@ export const ProgramCard = ({
   }
 
   return (
-    <div className="text-foreground flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 pb-8 sm:px-14">
+    <div
+      className={cn(
+        "text-foreground flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 pb-8 sm:px-14",
+      )}
+    >
       <p className="!font-ubuntu text-left text-2xl font-medium">{title}</p>
-      <span className="flex flex-col items-baseline gap-x-2 sm:flex-row">
+      <span
+        className={cn(
+          "flex items-baseline gap-x-2 sm:flex-row",
+          displayTimeLeft && displayTimeLeft.length > 5 && "flex-col",
+        )}
+      >
         <p className={cn("text-lg font-medium italic")}>{timeString}</p>
         {!ended && (
           <TooltipSimple
