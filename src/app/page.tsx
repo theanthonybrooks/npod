@@ -361,6 +361,7 @@ export default function Home() {
                           end={nextEvent.end}
                           description={nextEvent.description}
                           shouldDisplayTime
+                          preview
                         />
                       );
                     })()}

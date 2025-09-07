@@ -5,7 +5,7 @@ import { generateICSFile } from "@/utils/calendarFns";
 import { cn } from "@/utils/utils";
 import { format, intervalToDuration, isBefore } from "date-fns";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LuCalendarCheck, LuCalendarHeart } from "react-icons/lu";
 
 interface ProgramCardProps {
@@ -14,6 +14,7 @@ interface ProgramCardProps {
   start: Date;
   end: Date;
   shouldDisplayTime?: boolean;
+  preview?: boolean;
 }
 
 interface SavedEvent {
@@ -29,7 +30,11 @@ export const ProgramCard = ({
   shouldDisplayTime,
   start,
   end,
+  preview,
 }: ProgramCardProps) => {
+  const [isClamped, setIsClamped] = useState(false);
+  const descRef = useRef<HTMLParagraphElement>(null);
+
   let displayTimeLeft: string | null = null;
   const [isSaved, setIsSaved] = useState(false);
 
@@ -57,6 +62,13 @@ export const ProgramCard = ({
     const saved = loadSavedEvents();
     setIsSaved(saved.some((ev) => ev.key === eventKey));
   }, [eventKey]);
+
+  useEffect(() => {
+    const el = descRef.current;
+    if (el) {
+      setIsClamped(el.scrollHeight > el.clientHeight);
+    }
+  }, [description]);
 
   const handleAddToCalendar = () => {
     const saved = loadSavedEvents();
@@ -98,7 +110,7 @@ export const ProgramCard = ({
   return (
     <div className="text-foreground flex w-full flex-col items-start gap-y-2 rounded-4xl bg-white/90 p-6 pb-8 sm:px-14">
       <p className="!font-ubuntu text-left text-2xl font-medium">{title}</p>
-      <span className="flex items-baseline gap-2">
+      <span className="flex flex-col items-baseline gap-x-2 sm:flex-row">
         <p className={cn("text-lg font-medium italic")}>{timeString}</p>
         {!ended && (
           <TooltipSimple
@@ -125,7 +137,20 @@ export const ProgramCard = ({
           <p className="text-foreground/70">({displayTimeLeft})</p>
         )}
       </span>
-      <p className="mt-3 text-start text-lg">{description}</p>
+      <p
+        ref={descRef}
+        className={cn(
+          "mt-3 text-start text-lg",
+          preview && "line-clamp-[10] sm:line-clamp-[7] xl:line-clamp-none",
+        )}
+      >
+        {description}
+      </p>
+      {preview && isClamped && (
+        <p className="text-foreground/70 mt-3">
+          (Read full text on the program page)
+        </p>
+      )}
       <Link
         href={icsLink}
         download={`${title.replace(/\s+/g, "_")}.ics`}
